@@ -11,10 +11,10 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 EXCEPTIONALLY FROM THE ABOVE LICENSE: ANY INDIVIDUALS, ORGANIZATIONS, OR ASSOCIATES OF THE FOLLOWING INDIVIDUALS MAY NOT USE THIS SOFTWARE, ASSOCIATED DOCUMENTATION, OR ANY DERIVATIVES OF THE SOFTWARE WITHOUT EXPLICIT PERMISSION FROM THE ORIGINAL LICENSE HOLDER:
 
 - Louis Gualtieri Jr (Known as Melissa Gualtieri or Glitch) or any associates or projects of theirs.
-
+ 
 Reason: Breach of contract and currently owing 15,000 CAD through a small claims order to Noor Nahas
 
-- Michael Dzedzej Erebus#3222 
+- Michael Dzedzej 
 
 Reason: Shitty FiveM developer who repackages open-source scripts and killed an RP community because of self esteem issues
 
