@@ -15,6 +15,8 @@ Popcornrp-Customs was created following the subsequent discovery of QB-Customs c
 
 Find Ox_lib Here: https://github.com/overextended/ox_lib
 
+This uses dragcam (already part of this resource) from Jorn:  https://github.com/Jorn08/dragcam
+
 To use this resource, install ox_lib and this resource and ensure Popcornrp-Customs after ox_lib. All car customization locations can be set in the config.lua file.
 
 Popcornrp-Customs allows you to set up the following:
