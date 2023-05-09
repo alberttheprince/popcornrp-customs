@@ -3,27 +3,28 @@ Config = {}
 Config.Currency = '$'
 
 Config.Zones = {
-    {
-        freeRepair = { 'police' },
-        freeMods = { 'police' },
-        job = { 'police' },
-        points = {
-            vec3(455.15, -991.55, 25.75),
-            vec3(444.83, -991.55, 25.75),
-            vec3(444.84, -1000.55, 25.75),
-            vec3(455.13, -1000.56, 25.75),
-        }
-    },
-    {
-        freeRepair = { 'police' },
-        freeMods = { 'ambulance' },
-        points = {
-            vec3(-344.36, -121.92, 38.60),
-            vec3(-319.43, -130.65, 38.60),
-            vec3(-324.77, -147.93, 38.60),
-            vec3(-348.59, -139.1, 38.60),
-        }
-    },
+-- These MUST be configured with your own location before using them. The current coordinates are set for MOLO MRPD and Benny's
+--     {
+--         freeRepair = { 'police' },
+--         freeMods = { 'police' },
+--         job = { 'police' },
+--         points = {
+--             vec3(455.15, -991.55, 25.75),
+--             vec3(444.83, -991.55, 25.75),
+--             vec3(444.84, -1000.55, 25.75),
+--             vec3(455.13, -1000.56, 25.75),
+--         }
+--     },
+--     {
+--         freeRepair = { 'police' },
+--         freeMods = { 'ambulance' },
+--         points = {
+--             vec3(-344.36, -121.92, 38.60),
+--             vec3(-319.43, -130.65, 38.60),
+--             vec3(-324.77, -147.93, 38.60),
+--             vec3(-348.59, -139.1, 38.60),
+--         }
+--     },
     {
         points = {
             vec3(-224.97, -1314.69, 30.89),
