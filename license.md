@@ -12,7 +12,7 @@ EXCEPTIONALLY FROM THE ABOVE LICENSE: ANY INDIVIDUALS, ORGANIZATIONS, OR ASSOCIA
 
 - Louis Gualtieri Jr (Known as Melissa Gualtieri or Glitch) or any associates or projects of theirs.
  
-Reason: Breach of contract and currently owing 15,000 CAD through a small claims order to Noor Nahas
+Reason: Breach of contract and currently owing 15,000 CAD through a small claims court order to Noor Nahas
 
 - Michael Dzedzej 
 
