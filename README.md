@@ -6,6 +6,7 @@ This release is a thank you to the FiveM open-source community and all the devel
 Thank you, Jorn (Discord: @Jorn#0008), for his hard work on this resource and the Popcorn Roleplay Community for testing and supporting the development of this resource. Come join our server to experience our unique "Casually Serious" RP community!
 
 Popcorn Roleplay Discord: https://discord.gg/popcornroleplay
+
 Popcorn Roleplay server: connect 144.217.10.12
 
 Want to say thank you? We'd appreciate any donation on our Ko-Fi here: https://ko-fi.com/popcornrp.
