@@ -22,8 +22,9 @@ local function livery()
             liveryLabels[i + 1] = ('Livery %d'):format(i + 1)
         end
     else
+        liveryLabels[1] = 'Stock'
         for i = 0, GetNumVehicleMods(vehicle, 48) - 1 do
-            liveryLabels[i + 1] = ('%s'):format(GetLabelText(GetModTextLabel(vehicle, 48, i)))
+            liveryLabels[i + 2] = ('%s'):format(GetLabelText(GetModTextLabel(vehicle, 48, i)))
         end
     end
 
@@ -37,7 +38,7 @@ local function livery()
             if originalLivery.old then
                 SetVehicleLivery(vehicle, index - 1)
             else
-                SetVehicleMod(vehicle, 48, index - 1, false)
+                SetVehicleMod(vehicle, 48, index - 2, false)
             end
             return ('%s installed'):format(liveryLabels[index])
         end,
@@ -48,7 +49,7 @@ local function livery()
                 SetVehicleMod(vehicle, 48, originalLivery.index, false)
             end
         end,
-        defaultIndex = originalLivery.index + 1,
+        defaultIndex = originalLivery.old and originalLivery.index + 1 or originalLivery.index + 2,
     }
 
 
