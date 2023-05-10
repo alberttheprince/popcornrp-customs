@@ -19,6 +19,8 @@ This uses dragcam (already part of this resource) from Jorn:  https://github.com
 
 To use this resource, install ox_lib and this resource and ensure Popcornrp-Customs after ox_lib. All car customization locations can be set in the config.lua file.
 
+Preview: https://www.youtube.com/watch?v=8UcGmHJ3mUo
+
 Popcornrp-Customs allows you to set up the following:
 
 - Free EMS and Police Customization
