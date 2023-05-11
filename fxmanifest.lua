@@ -1,8 +1,13 @@
 fx_version 'cerulean'
 game 'gta5'
-author 'Jorn#0008'
 lua54 'yes'
 use_experimental_fxv2_oal 'yes'
+
+author 'Jorn#0008'
+name 'popcornrp-customs'
+description 'Customs script using ox_lib'
+repository 'https://github.com/alberttheprince/popcornrp-customs'
+version '1.0.2'
 
 ui_page 'web/index.html'
 
