@@ -15,7 +15,7 @@ local function windowTint()
         values = windowTintLabels,
         set = function(index)
             SetVehicleWindowTint(vehicle, index - 1)
-            return ('%s windows installed'):format(windowTintLabels[index])
+            return originalWindowTint == index - 1, ('%s windows installed'):format(windowTintLabels[index])
         end,
         restore = function()
             SetVehicleWindowTint(vehicle, originalWindowTint)

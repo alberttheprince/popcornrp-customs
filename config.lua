@@ -82,7 +82,7 @@ Config.Mods = {
     { id = 19, label = 'Subwoofer',            category = 'parts' },
     -- { id = 20, label = 'Tyre smoke',                category = 'colors' },
     { id = 21, label = 'Hydraulics',           category = 'parts' },
-    { id = 22, label = 'Xenon lights',         category = 'colors' },
+    -- { id = 22, label = 'Xenon lights',         category = 'colors' },
     -- { id = 23, label = 'Wheels', category = 'parts' },
     -- { id = 24, label = 'Rear wheels or hydraulics', category = 'parts' },
     { id = 25, label = 'Plate holder',         category = 'parts' },

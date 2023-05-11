@@ -20,7 +20,7 @@ local function neon()
             defaultIndex = enabled and 2 or 1,
             set = function(index)
                 SetVehicleNeonLightEnabled(vehicle, i - 1, index == 2)
-                return ("Neon %s %s"):format(Config.Neon[i].label, index == 2 and 'enabled' or 'disabled')
+                return originalNeon[i] == (index == 2), ("Neon %s %s"):format(Config.Neon[i].label, index == 2 and 'enabled' or 'disabled')
             end,
             restore = function()
                 SetVehicleNeonLightEnabled(vehicle, i - 1, originalNeon[i])
@@ -48,7 +48,7 @@ local function neon()
         set = function(index)
             local rgb = Config.NeonColors[index]
             SetVehicleNeonLightsColour(vehicle, rgb.r, rgb.g, rgb.b)
-            return Config.NeonColors[index].label
+            return originalLabelIndex == index, ('%s neon installed'):format(Config.NeonColors[index].label)
         end,
         restore = function()
             local rgb = Config.NeonColors[originalLabelIndex]
@@ -76,11 +76,11 @@ local function onSubmit(selected, scrollIndex, args)
         v.restore()
     end
 
-    local desc = option.set(scrollIndex)
+    local duplicate, desc = option.set(scrollIndex)
 
-    local success = require('client.utils.installMod')({
+    local success = require('client.utils.installMod')(duplicate, 'colors', {
         description = desc,
-    }, 'colors')
+    })
 
     if not success then menu.options[selected].restore() end
 

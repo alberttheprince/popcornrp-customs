@@ -1,7 +1,18 @@
----@param props NotifyProps?
+---@param duplicate boolean
 ---@param mod 'repair' | 'cosmetic' | 'colors' | 11 | 12 | 13 | 15 | 18
+---@param props NotifyProps?
 ---@param level number?
-return function(props, mod, level)
+return function(duplicate, mod, props, level)
+    if duplicate then
+        lib.notify({
+            title = 'Customs',
+            description = 'You already have this mod installed',
+            position = 'top',
+            type = 'error',
+        })
+        return false
+    end
+
     local success = lib.callback.await('customs:server:pay', false, mod, level)
     if success then
         lib.notify({

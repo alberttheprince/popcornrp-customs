@@ -24,7 +24,7 @@ local function xenon()
             end
             ToggleVehicleMod(vehicle, 22, true)
             SetVehicleXenonLightsColor(vehicle, index - 3)
-            return ('%s xenon installed'):format(xenonLabels[index])
+            return originalXenon == index - 3, ('%s xenon installed'):format(xenonLabels[index])
         end,
         restore = function()
             ToggleVehicleMod(vehicle, 22, originalToggle)

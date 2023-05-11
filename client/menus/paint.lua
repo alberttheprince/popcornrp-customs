@@ -44,20 +44,20 @@ local menu = {
     id = 'customs-paint',
     canClose = true,
     disableInput = false,
-    title = 'Primary Paint',
     position = 'top-left',
     options = {},
 }
 
 local function onSubmit(selected, scrollIndex, args)
     local option = menu.options[selected]
+    local duplicate = option.ids[scrollIndex] == originalPaint[primaryPaint and 'primary' or 'secondary']
 
-    local success = require('client.utils.installMod')({
+    local success = require('client.utils.installMod')(duplicate, 'colors', {
         description = ('%s applied'):format(option.values[scrollIndex]),
         icon = 'fas fa-paint-brush',
-    }, 'colors')
+    })
 
-    if not success then menu.options[selected].restore() end
+    if not success then SetVehicleColours(vehicle, originalPaint.primary, originalPaint.secondary) end
 
     lib.setMenuOptions('customs-paint', paintMods())
     lib.showMenu('customs-paint', lastIndex)
@@ -87,6 +87,7 @@ end
 return function(primary)
     primaryPaint = primary
     menu.options = paintMods()
+    menu.title = primaryPaint and 'Primary paint' or 'Secondary paint'
     lib.registerMenu(menu, onSubmit)
     return menu.id
 end

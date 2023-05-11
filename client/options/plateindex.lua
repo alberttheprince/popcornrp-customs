@@ -15,7 +15,7 @@ local function plateIndex()
         values = plateIndexLabels,
         set = function(index)
             SetVehicleNumberPlateTextIndex(vehicle, index - 1)
-            return ('%s plate installed'):format(plateIndexLabels[index])
+            return originalPlateIndex == index - 1, ('%s plate installed'):format(plateIndexLabels[index])
         end,
         restore = function()
             SetVehicleNumberPlateTextIndex(vehicle, originalPlateIndex)

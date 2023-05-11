@@ -48,7 +48,7 @@ local function performance()
             defaultIndex = currentMod + 2,
             set = function(index)
                 SetVehicleMod(vehicle, mod.id, index - 2, false)
-                return ('%s installed'):format(modLabels[index])
+                return currentMod == index - 2, ('%s installed'):format(modLabels[index])
             end,
             restore = function()
                 SetVehicleMod(vehicle, mod.id, originalMods[mod.id], false)
@@ -69,7 +69,7 @@ local function performance()
             defaultIndex = originalTurbo and 2 or 1,
             set = function(index)
                 ToggleVehicleMod(vehicle, 18, index == 2)
-                return ('Turbo %s'):format(index == 2 and 'enabled' or 'disabled')
+                return originalTurbo == (index == 2), ('Turbo %s'):format(index == 2 and 'enabled' or 'disabled')
             end,
             restore = function()
                 ToggleVehicleMod(vehicle, 18, originalTurbo)
@@ -98,11 +98,11 @@ local function onSubmit(selected, scrollIndex)
         v.restore()
     end
 
-    local desc = menu.options[selected].set(scrollIndex)
+    local duplicate, desc = menu.options[selected].set(scrollIndex)
 
-    local success = require('client.utils.installMod')({
+    local success = require('client.utils.installMod')(duplicate, menu.options[selected].id, {
         description = desc,
-    }, menu.options[selected].id, scrollIndex)
+    }, scrollIndex)
 
     if not success then menu.options[selected].restore() end
 

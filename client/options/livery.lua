@@ -37,10 +37,11 @@ local function livery()
         set = function(index)
             if originalLivery.old then
                 SetVehicleLivery(vehicle, index - 1)
+                return originalLivery.index == index - 1, ('%s installed'):format(liveryLabels[index])
             else
                 SetVehicleMod(vehicle, 48, index - 2, false)
+                return originalLivery.index == index - 2, ('%s installed'):format(liveryLabels[index])
             end
-            return ('%s installed'):format(liveryLabels[index])
         end,
         restore = function()
             if originalLivery.old then

@@ -34,7 +34,7 @@ local function parts()
             defaultIndex = currentMod + 2,
             set = function(index)
                 SetVehicleMod(vehicle, mod.id, index - 2, false)
-                return ('%s installed'):format(modLabels[index])
+                return originalMods[mod.id] == index - 2, ('%s installed'):format(modLabels[index])
             end,
             restore = function()
                 SetVehicleMod(vehicle, mod.id, originalMods[mod.id], false)
@@ -85,11 +85,11 @@ local function onSubmit(selected, scrollIndex, args)
     end
 
 
-    local desc = menu.options[selected].set(scrollIndex)
+    local duplicate, desc = menu.options[selected].set(scrollIndex)
 
-    local success = require('client.utils.installMod')({
+    local success = require('client.utils.installMod')(duplicate, 'cosmetic', {
         description = desc,
-    }, 'cosmetic')
+    })
 
     if not success then menu.options[selected].restore() end
 

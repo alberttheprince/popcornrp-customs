@@ -17,7 +17,7 @@ local function extras()
             values = {'Enabled', 'Disabled'},
             set = function(selected, index)
                 SetVehicleExtra(vehicle, i, index - 1)
-                return ('%s %s'):format(options[selected].label, index == 1 and 'enabled' or 'disabled')
+                return originalExtras[i] == (index - 1 == 0), ('%s %s'):format(options[selected].label, index == 1 and 'enabled' or 'disabled')
             end,
             restore = function()
                 SetVehicleExtra(vehicle, i, not originalExtras[i])
@@ -48,11 +48,11 @@ local function onSubmit(selected, scrollIndex, args)
         v.restore()
     end
 
-    local desc = option.set(selected, scrollIndex)
+    local duplicate, desc = option.set(selected, scrollIndex)
 
-    local success = require('client.utils.installMod')({
+    local success = require('client.utils.installMod')(duplicate, 'cosmetic', {
         description = desc,
-    }, 'cosmetic')
+    })
 
     if not success then menu.options[selected].restore() end
 

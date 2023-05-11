@@ -24,7 +24,7 @@ local function tyresmoke()
         set = function(index)
             local rgb = Config.TyreSmoke[index]
             SetVehicleTyreSmokeColor(vehicle, rgb.r, rgb.g, rgb.b)
-            return ('%s installed'):format(Config.TyreSmoke[index].label)
+            return originalLabelIndex == index, ('%s installed'):format(Config.TyreSmoke[index].label)
         end,
         restore = function()
             local rgb = Config.TyreSmoke[originalLabelIndex]

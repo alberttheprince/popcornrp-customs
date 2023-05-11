@@ -9,13 +9,16 @@ local VehicleClass = require('client.utils.enums.VehicleClass')
 local function isWheelTypeAllowed(wheelType)
     local class = GetVehicleClass(vehicle)
     if class == VehicleClass.Cycles then return false end
-    if wheelType == WheelType.Bike then
-        if class == VehicleClass.Motorcycles then
+
+    if class == VehicleClass.Motorcycles then
+        if wheelType == WheelType.Bike then
             return true
         end
         return false
-    elseif wheelType == WheelType.OpenWheel then
-        if class == VehicleClass.OpenWheels then
+    end
+
+    if class == VehicleClass.OpenWheels then
+        if wheelType == WheelType.OpenWheel then
             return true
         end
         return false
@@ -48,7 +51,7 @@ local function wheels()
                 SetVehicleWheelType(vehicle, wheelType)
                 SetVehicleMod(vehicle, 23, index - 1, false)
             end,
-            defaultIndex = GetVehicleWheelType(vehicle) == category.id and originalMod + 1 or 1
+            defaultIndex = originalWheelType == category.id and originalMod + 1 or 1
         }
 
         if GetVehicleClass(vehicle) == VehicleClass.Motorcycles then
@@ -62,12 +65,14 @@ local function wheels()
                     SetVehicleWheelType(vehicle, 6)
                     SetVehicleMod(vehicle, 24, index - 1, false)
                 end,
-                defaultIndex = GetVehicleWheelType(vehicle) == 6 and originalRearWheel + 1 or 1,
+                defaultIndex = originalWheelType == 6 and originalRearWheel + 1 or 1,
             }
         end
 
         ::continue::
     end
+
+    SetVehicleWheelType(vehicle, originalWheelType)
 
     table.sort(options, function(a, b)
         if a.id == 'rear' then return false end
@@ -89,6 +94,7 @@ local menu = {
 local function onSubmit(selected, scrollIndex)
     local option = menu.options[selected]
     local label = option.values[scrollIndex]
+    local duplicate = option.id == originalWheelType and scrollIndex - 1 == originalMod
 
     if option.id == 6 then
         SetVehicleMod(vehicle, 24, originalRearWheel, false)
@@ -96,11 +102,9 @@ local function onSubmit(selected, scrollIndex)
         SetVehicleMod(vehicle, 23, originalMod, false)
     end
 
-    local success = require('client.utils.installMod')({
+    require('client.utils.installMod')(duplicate, 'cosmetic', {
         description = ('%s %s installed'):format(option.label, label),
-    }, 'cosmetic')
-
-    if not success then menu.options[selected].restore() end
+    })
 
     lib.setMenuOptions(menu.id, wheels())
     lib.showMenu(menu.id, lastIndex)

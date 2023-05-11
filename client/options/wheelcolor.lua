@@ -23,7 +23,7 @@ local function wheelcolor()
         close = true,
         set = function(index)
             SetVehicleExtraColours(vehicle, originalPearlescent, ids[index])
-            return ('%s applied'):format(labels[index])
+            return originalWheelColor == ids[index], ('%s applied'):format(labels[index])
         end,
         restore = function()
             SetVehicleExtraColours(vehicle, originalPearlescent, originalWheelColor)
