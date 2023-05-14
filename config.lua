@@ -2,12 +2,14 @@ Config = {}
 
 Config.Currency = '$'
 
+---@type ZoneOptions[]
 Config.Zones = {
 -- These MUST be configured with your own location before using them. The current coordinates are set for MOLO MRPD and Benny's
 --     {
 --         freeRepair = { 'police' },
 --         freeMods = { 'police' },
 --         job = { 'police' },
+--         hideBlip = true,
 --         points = {
 --             vec3(455.15, -991.55, 25.75),
 --             vec3(444.83, -991.55, 25.75),
