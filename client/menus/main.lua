@@ -37,13 +37,6 @@ local function main()
 
     local options = {
         {
-            label = 'Performance',
-            close = true,
-            args = {
-                menu = 'client.menus.performance',
-            }
-        },
-        {
             label = 'Cosmetics - Parts',
             close = true,
             args = {
@@ -58,7 +51,15 @@ local function main()
             }
         },
     }
-
+    if Config.Performance then
+        options[#options + 1] = {
+            label = 'Performance',
+            close = true,
+            args = {
+                menu = 'client.menus.performance',
+            }
+        }
+    end
     if DoesExtraExist(vehicle, 1) then
         options[#options + 1] = {
             label = 'Extras',
