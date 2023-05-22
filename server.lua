@@ -14,7 +14,7 @@ Functions.qb = {}
 Functions.qb.GetPlayer = function(src)
     return Core.Functions.GetPlayer(src)
 end
-Functions.qb.Getmoney = function(player, type)
+Functions.qb.GetMoney = function(player, type)
     return player.Functions.GetMoney(type)
 end
 Functions.qb.RemoveMoney = function(player, type, amount)
@@ -34,8 +34,11 @@ Functions.esx = {}
 Functions.esx.GetPlayer = function(src)
    return Core.GetPlayerFromId(src) 
 end
-Functions.esx.Getmoney = function(player, type)
-    return player.getAccount(type).money
+Functions.esx.GetCash = function(player)
+    return player.getMoney()
+end
+Functions.esx.GetBank = function(player)
+    return player.getAccount('bank').money
 end
 Functions.esx.RemoveMoney = function(player, type, amount)
     return player.removeAccountMoney(type, amount)
@@ -66,8 +69,8 @@ end
 local function removeMoney(source, amount)
     if not CoreName then return true end
     local player = Functions[CoreName].GetPlayer(source)
-    local cashBalance = Functions[CoreName].GetMoney(player, 'cash')
-    local bankBalance = Functions[CoreName].GetMoney(player, 'bank')
+    local cashBalance = Functions[CoreName].GetCash(player)
+    local bankBalance = Functions[CoreName].GetBank(player)
 
     if cashBalance >= amount then
         Functions[CoreName].RemoveMoney(player, 'cash', amount)
