@@ -144,7 +144,8 @@ menu.onClose = function()
 end
 
 lib.callback.register('customs:client:vehicleProps', function()
-    return QBCore.Functions.GetVehicleProperties(vehicle)
+    return lib.getVehicleProperties(vehicle)
+--     return QBCore.Functions.GetVehicleProperties(vehicle)
 end)
 
 return function()
