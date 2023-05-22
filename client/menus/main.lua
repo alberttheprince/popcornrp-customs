@@ -1,14 +1,20 @@
 mainLastIndex = 1
 vehicle = 0
 mainMenuId = 'customs-main'
-local QBCore
+local Core, corename
 local inMenu = false
 local dragcam = require('client.dragcam')
 local startDragCam = dragcam.startDragCam
 local stopDragCam = dragcam.stopDragCam
 
 if GetResourceState('qb-core') == 'started' then
-    QBCore = exports['qb-core']:GetCoreObject()
+    Core = exports['qb-core']:GetCoreObject()
+    corename = 'qb'
+elseif GetResourceState('es_extended') == 'starter' then
+    Core = exports['es_extended']:getSharedObject()
+    corename = 'esx'
+else
+    print('You arent using esx or qb, if you want payment to work use one of them.')
 end
 
 local menu = {
