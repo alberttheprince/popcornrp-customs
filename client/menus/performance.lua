@@ -1,3 +1,4 @@
+if not Config.Performance then return end
 local getModLabel = require('client.utils.getModLabel')
 local originalMods = {}
 local originalTurbo
