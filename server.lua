@@ -27,7 +27,7 @@ Functions.qb.Owned = function(vehicleplate)
     local result = MySQL.salar.await('SELECT 1 from player_vehicles WHERE plate = ?', {plate})
     return result
 end
-Functions.esx.Update = function(vehicleplate)
+Functions.qb.Update = function(vehicleplate)
     MySQL.update('UPDATE player_vehicles SET mods = ? WHERE plate = ?', {json.encode(vehicleProps), vehicleProps.plate})
 end
 Functions.esx = {}
