@@ -1,8 +1,8 @@
 local Core, CoreName
 if GetResourceState('qb-core') == 'started' then
-    QBCore = exports['qb-core']:GetCoreObject()
+    Core = exports['qb-core']:GetCoreObject()
     CoreName = 'qb'
-elseif
+elseif GetResourceState('es_extended') == 'started' then
     Core = exports["es_extended"]:getSharedObject()
     CoreName = 'esx'
 else
