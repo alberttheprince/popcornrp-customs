@@ -1,10 +1,34 @@
 local zoneId
-local QBCore
+local Core, CoreName
 local allowAccess = false
 
 if GetResourceState('qb-core') == 'started' then
-    QBCore = exports['qb-core']:GetCoreObject()
+    Core = exports['qb-core']:GetCoreObject()
+    CoreName = 'qb'
+elseif GetResourceState('es_extended') == 'starter' then
+    Core = exports['es_extended']:getSharedObject()
+    CoreName = 'esx'
+else
+    print('You arent using esx or qb, if you want payment to work use one of them.')
 end
+
+Functions = {}
+
+Functions.qb = {}
+Functions.qb.GetPlayer = function(src)
+    return Core.Functions.GetPlayer(src)
+end
+Functions.qb.GetJob = function(player)
+    return player.PlayerData.job.name 
+end
+Functions.esx = {}
+Functions.esx.GetPlayer = function(src)
+   return Core.GetPlayerFromId(src) 
+end
+Functions.esx.GetJob = function(player)
+    return Core.PlayerData.job.name
+end
+
 
 ---@param vertices vector3[]
 ---@return vector3
@@ -32,9 +56,10 @@ CreateThread(function()
                 zoneId = s.id
                 if not cache.vehicle then return end
                 local hasJob = true
-                if v.job and QBCore then
+                if v.job and CoreName then
                     hasJob = false
-                    local playerJob = QBCore.Functions.GetPlayerData().job.name
+                    local player = Functions[CoreName].player()
+                    local playerJob = Functions[CoreName].GetJob(player)
                     for _, job in ipairs(v.job) do
                         if playerJob == job then
                             hasJob = true
