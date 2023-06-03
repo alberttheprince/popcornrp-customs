@@ -2,14 +2,12 @@ Config = {}
 
 Config.Currency = '$'
 
----@type ZoneOptions[]
 Config.Zones = {
 -- These MUST be configured with your own location before using them. The current coordinates are set for MOLO MRPD and Benny's
 --     {
 --         freeRepair = { 'police' },
 --         freeMods = { 'police' },
 --         job = { 'police' },
---         hideBlip = true,
 --         points = {
 --             vec3(455.15, -991.55, 25.75),
 --             vec3(444.83, -991.55, 25.75),
@@ -28,6 +26,9 @@ Config.Zones = {
 --         }
 --     },
     {
+        freeRepair = { 'police' },
+        freeMods = { 'police' },
+        job = { 'police' },
         points = {
             vec3(-224.97, -1314.69, 30.89),
             vec3(-225.63, -1339.28, 30.89),
@@ -79,7 +80,7 @@ Config.Mods = {
     { id = 14, label = 'Horns',                category = 'parts' },
     { id = 15, label = 'Suspension Upgrade',   category = 'performance' },
     { id = 16, label = 'Armor Upgrade',        category = 'performance', enabled = false },
-    { id = 17, label = 'Nitrous',              category = 'performance', enabled = false },
+    { id = 17, label = 'Nitrous',              category = 'performance', enabled = true },
     -- { id = 18, label = 'Turbo Upgrade', category = 'performance' },
     { id = 19, label = 'Subwoofer',            category = 'parts' },
     -- { id = 20, label = 'Tyre smoke',                category = 'colors' },

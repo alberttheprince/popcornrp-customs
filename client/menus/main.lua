@@ -2,6 +2,7 @@ mainLastIndex = 1
 vehicle = 0
 mainMenuId = 'customs-main'
 local QBCore
+local ESX 
 local inMenu = false
 local dragcam = require('client.dragcam')
 local startDragCam = dragcam.startDragCam
@@ -9,6 +10,8 @@ local stopDragCam = dragcam.stopDragCam
 
 if GetResourceState('qb-core') == 'started' then
     QBCore = exports['qb-core']:GetCoreObject()
+elseif GetResourceState('es_extended') == "started" then 
+    ESX = exports["es_extended"]:getSharedObject()
 end
 
 local menu = {
@@ -138,7 +141,11 @@ menu.onClose = function()
 end
 
 lib.callback.register('customs:client:vehicleProps', function()
-    return QBCore.Functions.GetVehicleProperties(vehicle)
+    if QBCore then
+        return QBCore.Functions.GetVehicleProperties(vehicle)
+    elseif ESX then 
+        return ESX.Game.GetVehicleProperties(vehicle)
+    end 
 end)
 
 return function()

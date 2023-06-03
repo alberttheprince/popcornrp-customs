@@ -1,9 +1,12 @@
 local zoneId
 local QBCore
+local ESX
 local allowAccess = false
 
 if GetResourceState('qb-core') == 'started' then
     QBCore = exports['qb-core']:GetCoreObject()
+elseif GetResourceState('es_extended') == "started" then 
+    ESX = exports["es_extended"]:getSharedObject()
 end
 
 ---@param vertices vector3[]
@@ -41,6 +44,15 @@ CreateThread(function()
                             break
                         end
                     end
+                elseif v.job and ESX then 
+                    hasJob = false 
+                    local playerJob = ESX.PlayerData.job.name
+                    for _, job in ipairs(v.job) do 
+                        if playerJob == job then 
+                            hasJob = true 
+                            break
+                        end 
+                    end 
                 end
 
                 allowAccess = hasJob
@@ -66,16 +78,14 @@ CreateThread(function()
             end,
         })
 
-        if not v.hideBlip then
-            local center = calculatePolyzoneCenter(v.points)
-            local blip = AddBlipForCoord(center.x, center.y, center.z)
-            SetBlipSprite(blip, 72)
-            SetBlipScale(blip, 0.8)
-            SetBlipAsShortRange(blip, true)
-            BeginTextCommandSetBlipName('STRING')
-            AddTextComponentSubstringPlayerName('Customs')
-            EndTextCommandSetBlipName(blip)
-        end
+        local center = calculatePolyzoneCenter(v.points)
+        local blip = AddBlipForCoord(center.x, center.y, center.z)
+        SetBlipSprite(blip, 72)
+        SetBlipScale(blip, 0.8)
+        SetBlipAsShortRange(blip, true)
+        BeginTextCommandSetBlipName('STRING')
+        AddTextComponentSubstringPlayerName('Customs')
+        EndTextCommandSetBlipName(blip)
     end
 end)
 
