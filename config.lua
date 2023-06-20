@@ -1,7 +1,7 @@
 Config = {}
 
 Config.Currency = '$'
-
+Config.Performance = true -- This enables performance upgrades
 ---@type ZoneOptions[]
 Config.Zones = {
 -- These MUST be configured with your own location before using them. The current coordinates are set for MOLO MRPD and Benny's
