@@ -12,6 +12,7 @@ Popcorn Roleplay server: connect 144.217.10.12
 Want to say thank you? We'd appreciate any donation on our Ko-Fi here: https://ko-fi.com/popcornrp.
 
 Popcornrp-Customs was created following the subsequent discovery of QB-Customs containing stolen/leaked code. Popcornrp-Customs is a total replacement for QB-Customs and is fully compatible with QB-Garages. However, Popcornrp-Customs only depends on ox_lib and can be used with any framework.
+It's now compatible with ESX.
 
 Find Ox_lib Here: https://github.com/overextended/ox_lib
 

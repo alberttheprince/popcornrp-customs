@@ -1,9 +1,12 @@
 local zoneId
 local QBCore
+local ESX
 local allowAccess = false
 
 if GetResourceState('qb-core') == 'started' then
     QBCore = exports['qb-core']:GetCoreObject()
+elseif GetResourceState('es_extended') == "started" then 
+    ESX = exports["es_extended"]:getSharedObject()
 end
 
 ---@param vertices vector3[]
@@ -41,6 +44,15 @@ CreateThread(function()
                             break
                         end
                     end
+                elseif v.job and ESX then 
+                    hasJob = false 
+                    local playerJob = ESX.PlayerData.job.name
+                    for _, job in ipairs(v.job) do 
+                        if playerJob == job then 
+                            hasJob = true 
+                            break
+                        end 
+                    end 
                 end
 
                 allowAccess = hasJob
