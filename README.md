@@ -32,8 +32,8 @@ Popcornrp-Customs allows you to set up the following:
 - All tire and paint options (including Chameleon)
 - Customize your car (duh)
 
-You are free to modify this license as per the attached license. **Please read and understand the license**, as it is a slightly modified MIT License.
+You are free to modify this resource as per the attached license. **Please read and understand the license**, as it is a slightly modified MIT License.
 
-This resource is released with no support or promise of support. It is released as is, and we may make changes as we see fit. You may suggest changes, but we won't add or develop them unless we see a need for that function for our server Popcorn Roleplay. We have thoroughly tested this resource with our small community, but feel free to report any issues that may arise.
+This resource is released with no support or promise of support. It is released as is, and we may make changes as we see fit. You may suggest changes, but we will only add or develop them if we see a need for that function for our server Popcorn Roleplay. We have thoroughly tested this resource with our small community, but feel free to report any issues that may arise.
 
 Thank you, and enjoy!
