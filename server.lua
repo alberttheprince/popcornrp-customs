@@ -4,9 +4,8 @@ if GetResourceState('qb-core') == 'started' then
     QBCore = exports['qb-core']:GetCoreObject()
 elseif GetResourceState('es_extended') == 'started' then 
     ESX = exports["es_extended"]:getSharedObject()
-    print("esx loaded for popcorn-custom")
 else 
-    warn('qb-core is missing, modifications won\'t cost anything')
+    warn('Framework is missing, modifications won\'t cost anything')
 end
 
 ---@return number
