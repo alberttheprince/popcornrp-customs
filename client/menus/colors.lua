@@ -38,6 +38,7 @@ local function colors()
     options[#options+1] = require('client.options.wheelcolor')()
     options[#options+1] = require('client.options.windowtint')()
     options[#options+1] = require('client.options.tyresmoke')()
+    options[#options+1] = require('client.options.interior')()
 
     local liveryOption = require('client.options.livery')()
     if #liveryOption.values > 0 then
