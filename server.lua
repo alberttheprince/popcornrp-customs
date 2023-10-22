@@ -88,7 +88,7 @@ end
 --Copied from qb-mechanicjob
 RegisterNetEvent('customs:server:saveVehicleProps', function()
     local src = source --[[@as number]]
-    local vehicleProps = lib.callback.await('customs:client:vehicle', src)
+    local vehicleProps = lib.callback.await('customs:client:vehicleProps', src)
     if IsVehicleOwned(vehicleProps.plate) then
         MySQL.update('UPDATE player_vehicles SET mods = ? WHERE plate = ?', {json.encode(vehicleProps), vehicleProps.plate})
     end
