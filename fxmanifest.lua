@@ -11,7 +11,11 @@ version '1.3.1'
 
 ui_page 'web/index.html'
 
-server_script 'server.lua'
+server_scripts {
+    'server.lua',
+    '@oxmysql/lib/MySQL.lua'
+}
+
 client_scripts {
     'client/menus/main.lua',
     'client/zones.lua',
