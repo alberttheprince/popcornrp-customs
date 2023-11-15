@@ -4,26 +4,28 @@ local function livery()
     local oldLiveryMethod = GetVehicleLivery(vehicle)
     local newLiveryMethod = GetVehicleMod(vehicle, 48)
 
-    if oldLiveryMethod >= 0 then
-        originalLivery = {
-            index = oldLiveryMethod,
-            old = true
-        }
-    else
+    if newLiveryMethod >= 0 or oldLiveryMethod == -1 then
         originalLivery = {
             index = newLiveryMethod,
             old = false
+        }
+    else
+        originalLivery = {
+            index = oldLiveryMethod,
+            old = true
         }
     end
 
     local liveryLabels = {}
     if originalLivery.old then
-        for i = 0, GetVehicleLiveryCount(vehicle) - 1 do
+        local liveryCount = GetVehicleLiveryCount(vehicle) - 1
+        for i = 0, liveryCount do
             liveryLabels[i + 1] = ('Livery %d'):format(i + 1)
         end
     else
         liveryLabels[1] = 'Stock'
-        for i = 0, GetNumVehicleMods(vehicle, 48) - 1 do
+        local liveryCount = GetNumVehicleMods(vehicle, 48) - 1
+        for i = 0, liveryCount do
             liveryLabels[i + 2] = ('%s'):format(GetLabelText(GetModTextLabel(vehicle, 48, i)))
         end
     end
