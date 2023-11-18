@@ -1,15 +1,10 @@
 mainLastIndex = 1
 vehicle = 0
 mainMenuId = 'customs-main'
-local QBCore
 local inMenu = false
 local dragcam = require('client.dragcam')
 local startDragCam = dragcam.startDragCam
 local stopDragCam = dragcam.stopDragCam
-
-if GetResourceState('qb-core') == 'started' then
-    QBCore = exports['qb-core']:GetCoreObject()
-end
 
 local menu = {
     id = mainMenuId,
@@ -132,13 +127,11 @@ menu.onClose = function()
         icon = 'fa-solid fa-car',
         position = 'left-center',
     })
-    if QBCore then
-        TriggerServerEvent("customs:server:saveVehicleProps")
-    end
+    TriggerServerEvent("customs:server:saveVehicleProps")
 end
 
 lib.callback.register('customs:client:vehicleProps', function()
-    return QBCore.Functions.GetVehicleProperties(vehicle)
+    return lib.getVehicleProperties(vehicle)
 end)
 
 return function()

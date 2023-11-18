@@ -9,7 +9,7 @@ local function livery()
             index = newLiveryMethod,
             old = false
         }
-    else
+else
         originalLivery = {
             index = oldLiveryMethod,
             old = true

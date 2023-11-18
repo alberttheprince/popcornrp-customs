@@ -1,10 +1,5 @@
 local zoneId
-local QBCore
 local allowAccess = false
-
-if GetResourceState('qb-core') == 'started' then
-    QBCore = exports['qb-core']:GetCoreObject()
-end
 
 ---@param vertices vector3[]
 ---@return vector3
@@ -32,9 +27,9 @@ CreateThread(function()
                 zoneId = s.id
                 if not cache.vehicle then return end
                 local hasJob = true
-                if v.job and QBCore then
+                if v.job and QBX?.PlayerData then
                     hasJob = false
-                    local playerJob = QBCore.Functions.GetPlayerData().job.name
+                    local playerJob = QBX.PlayerData.job.name
                     for _, job in ipairs(v.job) do
                         if playerJob == job then
                             hasJob = true
