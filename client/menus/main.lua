@@ -1,6 +1,7 @@
 mainLastIndex = 1
 vehicle = 0
 mainMenuId = 'customs-main'
+local Qbox
 local inMenu = false
 local dragcam = require('client.dragcam')
 local startDragCam = dragcam.startDragCam
@@ -14,6 +15,10 @@ local menu = {
     position = 'top-left',
     options = {},
 }
+
+if GetResourceState('qbx_core') == 'started' then
+    Qbox = true
+end
 
 local function main()
     if GetVehicleBodyHealth(vehicle) < 1000.0 then
@@ -127,7 +132,9 @@ menu.onClose = function()
         icon = 'fa-solid fa-car',
         position = 'left-center',
     })
-    TriggerServerEvent("customs:server:saveVehicleProps")
+    if Qbox then
+        TriggerServerEvent("customs:server:saveVehicleProps")
+    end
 end
 
 lib.callback.register('customs:client:vehicleProps', function()
