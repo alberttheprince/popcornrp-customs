@@ -34,5 +34,8 @@ files {
     'carmodcols_gen9.meta',
 }
 
+lua54 'yes'
+use_experimental_fxv2_oal 'yes'
+
 data_file 'CARCOLS_GEN9_FILE' 'carcols_gen9.meta'
 data_file 'CARMODCOLS_GEN9_FILE' 'carmodcols_gen9.meta'
