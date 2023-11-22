@@ -4,25 +4,24 @@ lua54 'yes'
 use_experimental_fxv2_oal 'yes'
 
 author 'Jorn#0008'
-name 'popcornrp-customs'
+name 'qbx_customs'
 description 'Customs script using ox_lib'
-repository 'https://github.com/alberttheprince/popcornrp-customs'
-version '1.3.2'
+repository 'https://github.com/Qbox-project/qbx_customs'
+version '1.0.0'
 
 ui_page 'web/index.html'
 
-server_scripts {
-    'server.lua',
-    '@oxmysql/lib/MySQL.lua'
-}
-
-client_scripts {
-    'client/menus/main.lua',
-    'client/zones.lua',
-}
 shared_scripts {
     '@ox_lib/init.lua',
     'config.lua'
+}
+
+server_script 'server.lua'
+
+client_scripts {
+    '@qbx_core/modules/playerdata.lua',
+    'client/menus/main.lua',
+    'client/zones.lua',
 }
 
 files {

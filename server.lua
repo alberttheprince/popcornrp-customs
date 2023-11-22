@@ -1,6 +1,6 @@
-local QBCore
-if GetResourceState('qb-core') == 'started' then
-    QBCore = exports['qb-core']:GetCoreObject()
+local Qbox
+if GetResourceState('qbx_core') == 'started' then
+    Qbox = true
 else
     warn('qb-core is missing, modifications won\'t cost anything')
 end
@@ -18,8 +18,8 @@ end
 ---@param amount number
 ---@return boolean
 local function removeMoney(source, amount)
-    if not QBCore then return true end
-    local player = QBCore.Functions.GetPlayer(source)
+    if not Qbox then return true end
+    local player = exports.qbx_core:GetPlayer(source)
     local cashBalance = player.Functions.GetMoney('cash')
     local bankBalance = player.Functions.GetMoney('bank')
 
@@ -45,7 +45,7 @@ lib.callback.register('customs:server:pay', function(source, mod, level)
 
     for i, v in ipairs(Config.Zones) do
         if i == zone and v.freeMods then
-            local playerJob = QBCore.Functions.GetPlayer(source)?.PlayerData?.job?.name
+            local playerJob = exports.qbx_core:GetPlayer(source)?.PlayerData?.job?.name
             for _, job in ipairs(v.freeMods) do
                 if playerJob == job then
                     return true
@@ -63,7 +63,7 @@ lib.callback.register('customs:server:repair', function(source, bodyHealth)
 
     for i, v in ipairs(Config.Zones) do
         if i == zone and v.freeRepair then
-            local playerJob = QBCore.Functions.GetPlayer(source)?.PlayerData?.job?.name
+            local playerJob = exports.qbx_core:GetPlayer(source)?.PlayerData?.job?.name
             for _, job in ipairs(v.freeRepair) do
                 if playerJob == job then
                     return true
@@ -77,7 +77,7 @@ lib.callback.register('customs:server:repair', function(source, bodyHealth)
 end)
 
 local function IsVehicleOwned(plate)
-    local result = MySQL.scalar.await('SELECT 1 from player_vehicles WHERE plate = ?', {plate})
+    local result = exports.oxmysql.scalar_async('SELECT 1 from player_vehicles WHERE plate = ?', {plate})
     if result then
         return true
     else
@@ -90,6 +90,6 @@ RegisterNetEvent('customs:server:saveVehicleProps', function()
     local src = source --[[@as number]]
     local vehicleProps = lib.callback.await('customs:client:vehicleProps', src)
     if IsVehicleOwned(vehicleProps.plate) then
-        MySQL.update('UPDATE player_vehicles SET mods = ? WHERE plate = ?', {json.encode(vehicleProps), vehicleProps.plate})
+        exports.oxmysql.update('UPDATE player_vehicles SET mods = ? WHERE plate = ?', {json.encode(vehicleProps), vehicleProps.plate})
     end
 end)
