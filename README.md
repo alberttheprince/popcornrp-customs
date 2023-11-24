@@ -1,29 +1,20 @@
-# popcornrp-customs
-A free-to-use and modify vehicle customization for FiveM using ox-lib
+# qbx_customs
 
-This release is a thank you to the FiveM open-source community and all the developers who have poured hours of their free time into creating helpful, free resources that I've used on my servers in the past and continue to use. Thank you!
+![image](https://github.com/Popcorn-RP/qbx_customs/assets/85725579/43d91928-3e1d-4ef2-b73e-d1f47a831495)
 
-Thank you, Jorn (Discord: @Jorn#0008), for his hard work on this resource and the Popcorn Roleplay Community for testing and supporting the development of this resource. Come join our server to experience our unique "Casually Serious" RP community!
 
-Popcorn Roleplay Discord: https://discord.gg/popcornroleplay
+A free-to-use and modify vehicle customization resource forked from [Popcornrp-customs](https://github.com/alberttheprince/popcornrp-customs)
 
-Popcorn Roleplay server: connect 144.217.10.12
+[Preview](https://www.youtube.com/watch?v=8UcGmHJ3mUo)
 
-Want to say thank you? We'd appreciate any donation on our Ko-Fi here: https://ko-fi.com/popcornrp.
+# Dependencies
 
-Popcornrp-Customs was created following the subsequent discovery of QB-Customs containing stolen/leaked code. Popcornrp-Customs is a total replacement for QB-Customs and is fully compatible with QB-Garages. However, Popcornrp-Customs only depends on ox_lib and can be used with any framework.
+- [ox_lib](https://github.com/overextended/ox_lib)
+- [qbx_core](https://github.com/Qbox-project/qbx_core)
 
-Find Ox_lib Here: https://github.com/overextended/ox_lib
+# Features
 
-This uses dragcam (already part of this resource) from Jorn:  https://github.com/Jorn08/dragcam
-
-To use this resource, install ox_lib and this resource and ensure Popcornrp-Customs after ox_lib. All car customization locations can be set in the config.lua file.
-
-Preview: https://www.youtube.com/watch?v=8UcGmHJ3mUo
-
-Popcornrp-Customs allows you to set up the following:
-
-- Free EMS and Police Customization
+- Job Whitelist for free Customization
 - Disable or Enable customization options
 - Change pricing
 - Drag your camera and zoom in and out
@@ -32,8 +23,22 @@ Popcornrp-Customs allows you to set up the following:
 - All tire and paint options (including Chameleon)
 - Customize your car (duh)
 
-You are free to modify this resource as per the attached license. **Please read and understand the license**, as it is a slightly modified MIT License.
+# Info
 
-This resource is released with no support or promise of support. It is released as is, and we may make changes as we see fit. You may suggest changes, but we will only add or develop them if we see a need for that function for our server Popcorn Roleplay. We have thoroughly tested this resource with our small community, but feel free to report any issues that may arise.
+The foundation for qbx_customs, Popcornrp-Customs, was created following the subsequent discovery of QB-Customs containing stolen/leaked code. Popcornrp-Customs is a total replacement for QB-Customs, meant to replace it and improve on its original functionality.
 
-Thank you, and enjoy!
+Popcornrp-customs was released as a thank-you to the FiveM open-source community and all the developers who have poured thousands of hours of their free time into creating helpful, free resources.
+
+Thank you!
+
+# Credits
+
+Thank you, Jorn (Discord: jorn08), for your hard work on this resource. None of this would be possible without you!
+
+Qbx_customs also includes functionality from the cool dragcam resource by Jorn, check it out!:  https://github.com/Jorn08/dragcam
+
+the Popcorn Roleplay Community for testing and supporting the development of this resource, and the Qbox development team for choosing to use popcornrp-customs as a foundation for Qbox customs!
+
+Popcorn Roleplay Discord: https://discord.gg/popcornroleplay
+
+🍿 ❤️ 🦆
