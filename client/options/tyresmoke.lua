@@ -16,7 +16,7 @@ local function tyresmoke()
 
     local option = {
         id = 'tyre_smoke',
-        label = 'Tyre smoke',
+        label = Lang:t('menus.options.tyreSmoke'),
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         close = true,
         values = smokeLabels,
@@ -24,7 +24,7 @@ local function tyresmoke()
         set = function(index)
             local rgb = Config.TyreSmoke[index]
             SetVehicleTyreSmokeColor(vehicle, rgb.r, rgb.g, rgb.b)
-            return originalLabelIndex == index, ('%s installed'):format(Config.TyreSmoke[index].label)
+            return originalLabelIndex == index, Lang:t('menus.general.installed', {element = Config.TyreSmoke[index].label})
         end,
         restore = function()
             local rgb = Config.TyreSmoke[originalLabelIndex]

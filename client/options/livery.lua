@@ -20,10 +20,10 @@ local function livery()
     if originalLivery.old then
         local liveryCount = GetVehicleLiveryCount(vehicle) - 1
         for i = 0, liveryCount do
-            liveryLabels[i + 1] = ('Livery %d'):format(i + 1)
+            liveryLabels[i + 1] = ('%s %d'):format(Lang:t('menus.options.livery'), i + 1)
         end
     else
-        liveryLabels[1] = 'Stock'
+        liveryLabels[1] = Lang:t('menus.general.stock')
         local liveryCount = GetNumVehicleMods(vehicle, 48) - 1
         for i = 0, liveryCount do
             liveryLabels[i + 2] = ('%s'):format(GetLabelText(GetModTextLabel(vehicle, 48, i)))
@@ -32,17 +32,17 @@ local function livery()
 
     local option = {
         id = 'livery',
-        label = 'Livery',
+        label = Lang:t('menus.options.livery'),
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         close = true,
         values = liveryLabels,
         set = function(index)
             if originalLivery.old then
                 SetVehicleLivery(vehicle, index - 1)
-                return originalLivery.index == index - 1, ('%s installed'):format(liveryLabels[index])
+                return originalLivery.index == index - 1, Lang:t('menus.options.general.installed', {element = liveryLabels[index]})
             else
                 SetVehicleMod(vehicle, 48, index - 2, false)
-                return originalLivery.index == index - 2, ('%s installed'):format(liveryLabels[index])
+                return originalLivery.index == index - 2, Lang:t('menus.options.general.installed', {element = liveryLabels[index]})
             end
         end,
         restore = function()

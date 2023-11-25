@@ -4,7 +4,7 @@ local function colors()
     local options = {}
 
     options[#options + 1] = {
-        label = 'Paint primary',
+        label = Lang:t('menus.colors.primary'),
         close = true,
         args = {
             menu = 'client.menus.paint',
@@ -15,7 +15,7 @@ local function colors()
     }
 
     options[#options + 1] = {
-        label = 'Paint secondary',
+        label = Lang:t('menus.colors.secondary'),
         close = true,
         args = {
             menu = 'client.menus.paint',
@@ -26,7 +26,7 @@ local function colors()
     }
 
     options[#options + 1] = {
-        label = 'Neon',
+        label = Lang:t('menus.colors.neon'),
         close = true,
         args = {
             menu = 'client.menus.neon',
@@ -54,7 +54,7 @@ end
 
 local menu = {
     id = 'customs-colors',
-    title = 'Cosmetics - Colors',
+    title = Lang:t('menus.colors.cosmetics_colors'),
     canClose = true,
     disableInput = false,
     options = {},

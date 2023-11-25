@@ -6,14 +6,14 @@ local function xenon()
     originalXenon = GetVehicleXenonLightsColor(vehicle)
     originalXenon = originalXenon == 255 and -1 or originalXenon
 
-    local xenonLabels = {'Disabled'}
+    local xenonLabels = {Lang:t('menus.general.disabled')}
     for i, v in ipairs(Config.Xenon) do
         xenonLabels[i + 1] = v.label
     end
 
     local option = {
         id = 'xenon',
-        label = 'Xenon',
+        label = Lang:t('menus.options.xenon.title'),
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         close = true,
         values = xenonLabels,
@@ -24,7 +24,7 @@ local function xenon()
             end
             ToggleVehicleMod(vehicle, 22, true)
             SetVehicleXenonLightsColor(vehicle, index - 3)
-            return originalXenon == index - 3, ('%s xenon installed'):format(xenonLabels[index])
+            return originalXenon == index - 3,Lang:t('menus.options.xenon.installed', {color = xenonLabels[index]})
         end,
         restore = function()
             ToggleVehicleMod(vehicle, 22, originalToggle)

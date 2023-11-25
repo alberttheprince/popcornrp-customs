@@ -25,7 +25,7 @@ local function pearlescent()
 
     local option = {
         id = 'pearlescent',
-        label = 'Pearlescent',
+        label = Lang:t('menus.options.pearlescent'),
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         ids = ids,
         values = labels,

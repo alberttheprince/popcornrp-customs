@@ -9,7 +9,7 @@ return function (vehicle, modType, modValue)
         end
     end
 
-    if modValue == -1 then return 'Stock' end
+    if modValue == -1 then return Lang:t('menus.general.stock') end
 
     local label = GetModTextLabel(vehicle, modType, modValue)
     return (not label or label == '') and tostring(modValue) or GetLabelText(label)

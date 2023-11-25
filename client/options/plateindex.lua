@@ -9,13 +9,13 @@ local function plateIndex()
 
     local option = {
         id = 'plate_index',
-        label = 'Plate Index',
+        label = Lang:t('menus.options.plateIndex.title'),
         description = ('%s%s'):format(Config.Currency, Config.Prices['cosmetic']),
         close = true,
         values = plateIndexLabels,
         set = function(index)
             SetVehicleNumberPlateTextIndex(vehicle, index - 1)
-            return originalPlateIndex == index - 1, ('%s plate installed'):format(plateIndexLabels[index])
+            return originalPlateIndex == index - 1, Lang:t('menus.options.plateIndex.installed', {plate = plateIndexLabels[index]})
         end,
         restore = function()
             SetVehicleNumberPlateTextIndex(vehicle, originalPlateIndex)

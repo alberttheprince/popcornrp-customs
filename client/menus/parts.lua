@@ -18,7 +18,7 @@ local function parts()
         end
 
         local modLabels = {}
-        modLabels[1] = 'Stock'
+        modLabels[1] = Lang:t('menus.general.stock')
         for i = -1, modCount - 1 do
             modLabels[i + 2] = getModLabel(vehicle, mod.id, i)
         end
@@ -35,7 +35,7 @@ local function parts()
             defaultIndex = currentMod + 2,
             set = function(index)
                 SetVehicleMod(vehicle, mod.id, index - 2, false)
-                return originalMods[mod.id] == index - 2, ('%s installed'):format(modLabels[index])
+                return originalMods[mod.id] == index - 2, Lang:t('menus.options.general.installed', {element = modLabels[index]})
             end,
             restore = function()
                 SetVehicleMod(vehicle, mod.id, originalMods[mod.id], false)
@@ -47,7 +47,7 @@ local function parts()
 
     if GetVehicleClass(vehicle) ~= VehicleClass.Cycles then
         options[#options + 1] = {
-            label = 'Wheels',
+            label = Lang:t('menus.parts.wheels'),
             close = true,
             args = {
                 menu = 'client.menus.wheels',
@@ -66,7 +66,7 @@ end
 
 local menu = {
     id = 'customs-parts',
-    title = 'Cosmetics - Parts',
+    title = Lang:t('menus.parts.title'),
     canClose = true,
     disableInput = false,
     options = {},

@@ -31,7 +31,7 @@ local function performance()
         then goto continue end
 
         local modLabels = {}
-        modLabels[1] = 'Stock'
+        modLabels[1] = Lang:t('menus.general.stock')
         for i = -1, modCount - 1 do
             modLabels[i + 2] = getModLabel(vehicle, mod.id, i)
         end
@@ -62,14 +62,14 @@ local function performance()
     if GetVehicleClass(vehicle) ~= VehicleClass.Cycles then
         options[#options + 1] = {
             id = 18,
-            label = 'Turbo',
+            label = Lang:t('menus.performance.turbo'),
             description = ('%s%s'):format(Config.Currency, Config.Prices[18]),
-            values = {'Disabled', 'Enabled'},
+            values = {Lang:t('menus.genral.enabled'), Lang:t('menus.genral.disabled')},
             close = true,
             defaultIndex = originalTurbo and 2 or 1,
             set = function(index)
                 ToggleVehicleMod(vehicle, 18, index == 2)
-                return originalTurbo == (index == 2), ('Turbo %s'):format(index == 2 and 'enabled' or 'disabled')
+                return originalTurbo == (index == 2), ('%s %s'):format(Lang:t('menus.performance.turbo'), index == 2 and string.lower(Lang:t('menus.genral.enabled')) or string.lower(Lang:t('menus.genral.disabled')))
             end,
             restore = function()
                 ToggleVehicleMod(vehicle, 18, originalTurbo)
@@ -86,7 +86,7 @@ end
 
 local menu = {
     id = 'customs-performance',
-    title = 'Performance',
+    title = Lang:t('menus.performance.title'),
     canClose = true,
     disableInput = false,
     options = {},

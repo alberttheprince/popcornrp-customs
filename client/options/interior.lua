@@ -17,7 +17,7 @@ local function interior()
 
     local option = {
         id = 'interior',
-        label = 'Interior',
+        label = Lang:t('menus.options.interior'),
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         close = true,
         values = interiorLabels,

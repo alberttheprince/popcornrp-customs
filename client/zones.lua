@@ -43,7 +43,7 @@ CreateThread(function()
                     return
                 end
 
-                lib.showTextUI('Press [E] to tune your car', {
+                lib.showTextUI(Lang:t('textUI.tune'), {
                     icon = 'fa-solid fa-car',
                     position = 'left-center',
                 })

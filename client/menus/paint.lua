@@ -53,7 +53,7 @@ local function onSubmit(selected, scrollIndex, args)
     local duplicate = option.ids[scrollIndex] == originalPaint[primaryPaint and 'primary' or 'secondary']
 
     local success = require('client.utils.installMod')(duplicate, 'colors', {
-        description = ('%s applied'):format(option.values[scrollIndex]),
+        description = Lang:t('menus.general.applied', {element = option.values[scrollIndex]}),
         icon = 'fas fa-paint-brush',
     })
 
@@ -87,7 +87,7 @@ end
 return function(primary)
     primaryPaint = primary
     menu.options = paintMods()
-    menu.title = primaryPaint and 'Primary paint' or 'Secondary paint'
+    menu.title = primaryPaint and Lang:t('menus.paint.primary') or Lang:t('menus.paint.secondary')
     lib.registerMenu(menu, onSubmit)
     return menu.id
 end

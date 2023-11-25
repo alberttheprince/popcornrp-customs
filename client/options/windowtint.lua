@@ -9,13 +9,13 @@ local function windowTint()
 
     local option = {
         id = 'window_tint',
-        label = 'Window Tint',
+        label = Lang:t('menus.options.windowTint.title'),
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         close = true,
         values = windowTintLabels,
         set = function(index)
             SetVehicleWindowTint(vehicle, index - 1)
-            return originalWindowTint == index - 1, ('%s windows installed'):format(windowTintLabels[index])
+            return originalWindowTint == index - 1, Lang:t('menus.options.windowTint.installed', {window = windowTintLabels[index]})
         end,
         restore = function()
             SetVehicleWindowTint(vehicle, originalWindowTint)

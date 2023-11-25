@@ -16,14 +16,14 @@ local function wheelcolor()
 
     local option = {
         id = 'wheelcolor',
-        label = 'Wheel color',
+        label = Lang:t('menus.options.wheelColor'),
         description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
         ids = ids,
         values = labels,
         close = true,
         set = function(index)
             SetVehicleExtraColours(vehicle, originalPearlescent, ids[index])
-            return originalWheelColor == ids[index], ('%s applied'):format(labels[index])
+            return originalWheelColor == ids[index], Lang:t('menus.general.applied', {element = labels[index]})
         end,
         restore = function()
             SetVehicleExtraColours(vehicle, originalPearlescent, originalWheelColor)

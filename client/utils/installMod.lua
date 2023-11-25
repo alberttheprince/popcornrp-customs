@@ -4,14 +4,14 @@
 ---@param level number?
 return function(duplicate, mod, props, level)
     if duplicate then
-        exports.qbx_core:Notify('You already have this mod installed', 'error')
+        exports.qbx_core:Notify(Lang:t('notifications.error.alreadyInstalled'), 'error')
         return false
     end
 
     local success = lib.callback.await('customs:server:pay', false, mod, level)
     if success then
         exports.qbx_core:Notify(
-            props?.title or 'Customs',
+            props?.title or Lang:t('notifications.props.installTitle'),
             props?.position or 'top',
             props?.duration,
             props?.description,
@@ -24,6 +24,6 @@ return function(duplicate, mod, props, level)
         return true
     end
 
-    exports.qbx_core:Notify('You don\'t have enough money', 'error')
+    exports.qbx_core:Notify(Lang:t('notifications.error.money'), 'error')
     return false
 end
