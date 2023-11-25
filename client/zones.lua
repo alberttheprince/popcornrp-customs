@@ -1,10 +1,5 @@
 local zoneId
-local Qbox
 local allowAccess = false
-
-if GetResourceState('qbx_core') == 'started' then
-    Qbox = true
-end
 
 ---@param vertices vector3[]
 ---@return vector3

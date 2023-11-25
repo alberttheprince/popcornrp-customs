@@ -1,15 +1,10 @@
 fx_version 'cerulean'
 game 'gta5'
-lua54 'yes'
-use_experimental_fxv2_oal 'yes'
 
 author 'Jorn#0008'
-name 'qbx_customs'
-description 'Customs script using ox_lib'
+description 'qbx_customs'
 repository 'https://github.com/Qbox-project/qbx_customs'
 version '1.0.0'
-
-ui_page 'web/index.html'
 
 shared_scripts {
     '@ox_lib/init.lua',
@@ -24,6 +19,8 @@ client_scripts {
     'client/zones.lua',
 }
 
+ui_page 'web/index.html'
+
 files {
     'client/**/*.lua',
     'web/**/*',
@@ -33,3 +30,6 @@ files {
 
 data_file 'CARCOLS_GEN9_FILE' 'carcols_gen9.meta'
 data_file 'CARMODCOLS_GEN9_FILE' 'carmodcols_gen9.meta'
+
+lua54 'yes'
+use_experimental_fxv2_oal 'yes'

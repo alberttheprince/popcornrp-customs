@@ -1,9 +1,3 @@
-local Qbox
-if GetResourceState('qbx_core') == 'started' then
-    Qbox = true
-else
-    warn('qb-core is missing, modifications won\'t cost anything')
-end
 
 ---@return number
 local function getModPrice(mod, level)
@@ -18,7 +12,6 @@ end
 ---@param amount number
 ---@return boolean
 local function removeMoney(source, amount)
-    if not Qbox then return true end
     local player = exports.qbx_core:GetPlayer(source)
     local cashBalance = player.Functions.GetMoney('cash')
     local bankBalance = player.Functions.GetMoney('bank')
