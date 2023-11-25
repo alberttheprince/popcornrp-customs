@@ -20,7 +20,7 @@ local function neon()
             defaultIndex = enabled and 2 or 1,
             set = function(index)
                 SetVehicleNeonLightEnabled(vehicle, i - 1, index == 2)
-                return originalNeon[i] == (index == 2), ("Neon %s %s"):format(Config.Neon[i].label, index == 2 and 'enabled' or 'disabled')
+                return originalNeon[i] == (index == 2), ('Neon %s %s'):format(Config.Neon[i].label, index == 2 and 'enabled' or 'disabled')
             end,
             restore = function()
                 SetVehicleNeonLightEnabled(vehicle, i - 1, originalNeon[i])
@@ -89,13 +89,13 @@ local function onSubmit(selected, scrollIndex, args)
 end
 
 menu.onSideScroll = function(selected, scrollIndex)
-    PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", true)
+    PlaySoundFrontend(-1, 'NAV_UP_DOWN', 'HUD_FRONTEND_DEFAULT_SOUNDSET', true)
     local option = menu.options[selected]
     option.set(scrollIndex)
 end
 
 menu.onSelected = function(selected)
-    PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", true)
+    PlaySoundFrontend(-1, 'NAV_UP_DOWN', 'HUD_FRONTEND_DEFAULT_SOUNDSET', true)
     lastIndex = selected
 end
 

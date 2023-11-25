@@ -3,7 +3,7 @@ colorsLastIndex = 1
 local function colors()
     local options = {}
 
-    options[#options+1] = {
+    options[#options + 1] = {
         label = 'Paint primary',
         close = true,
         args = {
@@ -14,7 +14,7 @@ local function colors()
         }
     }
 
-    options[#options+1] = {
+    options[#options + 1] = {
         label = 'Paint secondary',
         close = true,
         args = {
@@ -25,7 +25,7 @@ local function colors()
         }
     }
 
-    options[#options+1] = {
+    options[#options + 1] = {
         label = 'Neon',
         close = true,
         args = {
@@ -33,16 +33,16 @@ local function colors()
         }
     }
 
-    options[#options+1] = require('client.options.xenon')()
-    options[#options+1] = require('client.options.pearlescent')()
-    options[#options+1] = require('client.options.wheelcolor')()
-    options[#options+1] = require('client.options.windowtint')()
-    options[#options+1] = require('client.options.tyresmoke')()
-    options[#options+1] = require('client.options.interior')()
+    options[#options + 1] = require('client.options.xenon')()
+    options[#options + 1] = require('client.options.pearlescent')()
+    options[#options + 1] = require('client.options.wheelcolor')()
+    options[#options + 1] = require('client.options.windowtint')()
+    options[#options + 1] = require('client.options.tyresmoke')()
+    options[#options + 1] = require('client.options.interior')()
 
     local liveryOption = require('client.options.livery')()
     if #liveryOption.values > 0 then
-        options[#options+1] = liveryOption
+        options[#options + 1] = liveryOption
     end
 
     table.sort(options, function(a, b)
@@ -88,7 +88,7 @@ local function onSubmit(selected, scrollIndex, args)
 end
 
 menu.onSideScroll = function(selected, scrollIndex)
-    PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", true)
+    PlaySoundFrontend(-1, 'NAV_UP_DOWN', 'HUD_FRONTEND_DEFAULT_SOUNDSET', true)
     local option = menu.options[selected]
     option.set(scrollIndex)
 end
@@ -101,7 +101,7 @@ menu.onClose = function()
 end
 
 menu.onSelected = function(selected)
-    PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", true)
+    PlaySoundFrontend(-1, 'NAV_UP_DOWN', 'HUD_FRONTEND_DEFAULT_SOUNDSET', true)
     colorsLastIndex = selected
 end
 

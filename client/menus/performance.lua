@@ -39,7 +39,7 @@ local function performance()
         local currentMod = GetVehicleMod(vehicle, mod.id)
         originalMods[mod.id] = currentMod
 
-        options[#options+1] = {
+        options[#options + 1] = {
             id = mod.id,
             label = mod.label,
             description = priceLabel(Config.Prices[mod.id]),
@@ -60,7 +60,7 @@ local function performance()
 
     originalTurbo = IsToggleModOn(vehicle, 18)
     if GetVehicleClass(vehicle) ~= VehicleClass.Cycles then
-        options[#options+1] = {
+        options[#options + 1] = {
             id = 18,
             label = 'Turbo',
             description = ('%s%s'):format(Config.Currency, Config.Prices[18]),
@@ -111,7 +111,7 @@ local function onSubmit(selected, scrollIndex)
 end
 
 menu.onSideScroll = function(selected, scrollIndex)
-    PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", true)
+    PlaySoundFrontend(-1, 'NAV_UP_DOWN', 'HUD_FRONTEND_DEFAULT_SOUNDSET', true)
     local option = menu.options[selected]
     option.set(scrollIndex)
 end
@@ -124,7 +124,7 @@ menu.onClose = function()
 end
 
 menu.onSelected = function(selected)
-    PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", true)
+    PlaySoundFrontend(-1, 'NAV_UP_DOWN', 'HUD_FRONTEND_DEFAULT_SOUNDSET', true)
     lastIndex = selected
 end
 

@@ -11,13 +11,13 @@ shared_scripts {
     'config.lua'
 }
 
-server_script 'server.lua'
-
 client_scripts {
     '@qbx_core/modules/playerdata.lua',
     'client/menus/main.lua',
     'client/zones.lua',
 }
+
+server_script 'server/main.lua'
 
 ui_page 'web/index.html'
 

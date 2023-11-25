@@ -79,12 +79,7 @@ end
 local function repair()
     local success = lib.callback.await('customs:server:repair', false, GetVehicleBodyHealth(vehicle))
     if success then
-        lib.notify({
-            title = 'Customs',
-            description = 'Vehicle repaired!',
-            position = 'top',
-            type = 'success'
-        })
+        exports.qbx_core:Notify('Vehicle repaired!', 'success')
         SendNUIMessage({sound = true})
         SetVehicleBodyHealth(vehicle, 1000.0)
         SetVehicleEngineHealth(vehicle, 1000.0)
@@ -92,12 +87,7 @@ local function repair()
         SetVehicleFixed(vehicle)
         SetVehicleFuelLevel(vehicle, fuelLevel)
     else
-        lib.notify({
-            title = 'Customs',
-            description = 'You don\'t have enough money!',
-            position = 'top',
-            type = 'error'
-        })
+        exports.qbx_core:Notify('You don\'t have enough money!', 'error')
     end
 
     menu.options = main()
@@ -116,7 +106,7 @@ local function onSubmit(selected, scrollIndex, args)
 end
 
 menu.onSelected = function(selected)
-    PlaySoundFrontend(-1, "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET", true)
+    PlaySoundFrontend(-1, 'NAV_UP_DOWN', 'HUD_FRONTEND_DEFAULT_SOUNDSET', true)
     mainLastIndex = selected
 end
 
@@ -127,7 +117,7 @@ menu.onClose = function()
         icon = 'fa-solid fa-car',
         position = 'left-center',
     })
-    TriggerServerEvent("customs:server:saveVehicleProps")
+    TriggerServerEvent('customs:server:saveVehicleProps')
 end
 
 lib.callback.register('customs:client:vehicleProps', function()

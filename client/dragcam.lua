@@ -121,34 +121,34 @@ end
 
 local function instructionalButton(controlId, text)
     ScaleformMovieMethodAddParamPlayerNameString(GetControlInstructionalButton(0, controlId, true))
-    BeginTextCommandScaleformString("STRING")
+    BeginTextCommandScaleformString('STRING')
     AddTextComponentSubstringKeyboardDisplay(text)
     EndTextCommandScaleformString()
 end
 
 local function showInstructionalButtons()
     CreateThread(function()
-        scaleform = RequestScaleformMovie("instructional_buttons")
+        scaleform = RequestScaleformMovie('instructional_buttons')
         while not HasScaleformMovieLoaded(scaleform) do
             Wait(0)
         end
-        BeginScaleformMovieMethod(scaleform, "CLEAR_ALL")
+        BeginScaleformMovieMethod(scaleform, 'CLEAR_ALL')
         EndScaleformMovieMethod()
 
-        BeginScaleformMovieMethod(scaleform, "SET_DATA_SLOT")
+        BeginScaleformMovieMethod(scaleform, 'SET_DATA_SLOT')
         ScaleformMovieMethodAddParamInt(1)
-        instructionalButton(14, "Decrease zoom")
+        instructionalButton(14, 'Decrease zoom')
         EndScaleformMovieMethod()
 
-        BeginScaleformMovieMethod(scaleform, "SET_DATA_SLOT")
+        BeginScaleformMovieMethod(scaleform, 'SET_DATA_SLOT')
         ScaleformMovieMethodAddParamInt(2)
-        instructionalButton(15, "Increase zoom")
+        instructionalButton(15, 'Increase zoom')
         EndScaleformMovieMethod()
 
-        BeginScaleformMovieMethod(scaleform, "DRAW_INSTRUCTIONAL_BUTTONS")
+        BeginScaleformMovieMethod(scaleform, 'DRAW_INSTRUCTIONAL_BUTTONS')
         EndScaleformMovieMethod()
 
-        BeginScaleformMovieMethod(scaleform, "SET_BACKGROUND_COLOUR")
+        BeginScaleformMovieMethod(scaleform, 'SET_BACKGROUND_COLOUR')
         ScaleformMovieMethodAddParamInt(0)
         ScaleformMovieMethodAddParamInt(0)
         ScaleformMovieMethodAddParamInt(0)
@@ -171,7 +171,7 @@ local function startDragCam(entity, radiusOptions)
     gRadiusMin = radiusOptions?.min or 2.5
     gRadiusMax = radiusOptions?.max or 10.0
     scrollIncrements = radiusOptions?.scrollIncrements or 0.5
-    cam = CreateCam("DEFAULT_SCRIPTED_CAMERA", true)
+    cam = CreateCam('DEFAULT_SCRIPTED_CAMERA', true)
     RenderScriptCams(true, true, 0, true, false)
     showInstructionalButtons()
     inputListener()
