@@ -50,7 +50,7 @@ local function onSubmit(selected, scrollIndex, args)
 
     local duplicate, desc = option.set(selected, scrollIndex)
 
-    local success = require('client.utils.installMod')(duplicate, 'cosmetic', {
+    local success = InstallMod(duplicate, 'cosmetic', {
         description = desc,
     })
 

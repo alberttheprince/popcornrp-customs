@@ -2,8 +2,8 @@ local originalWheelType
 local originalMod
 local originalRearWheel
 local lastIndex = 1
-local WheelType = require('client.utils.enums.WheelType')
-local VehicleClass = require('client.utils.enums.VehicleClass')
+local WheelType = require('client.enums.WheelType')
+local VehicleClass = require('client.enums.VehicleClass')
 
 ---@param wheelType WheelType
 local function isWheelTypeAllowed(wheelType)
@@ -102,7 +102,7 @@ local function onSubmit(selected, scrollIndex)
         SetVehicleMod(vehicle, 23, originalMod, false)
     end
 
-    local success = require('client.utils.installMod')(duplicate, 'cosmetic', {
+    local success = InstallMod(duplicate, 'cosmetic', {
         description = Lang:t('menus.wheels.installed', {category = option.label, wheel = label}),
     })
 

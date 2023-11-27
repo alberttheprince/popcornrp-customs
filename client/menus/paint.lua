@@ -52,7 +52,7 @@ local function onSubmit(selected, scrollIndex, args)
     local option = menu.options[selected]
     local duplicate = option.ids[scrollIndex] == originalPaint[primaryPaint and 'primary' or 'secondary']
 
-    local success = require('client.utils.installMod')(duplicate, 'colors', {
+    local success = InstallMod(duplicate, 'colors', {
         description = Lang:t('menus.general.applied', {element = option.values[scrollIndex]}),
         icon = 'fas fa-paint-brush',
     })

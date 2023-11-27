@@ -76,7 +76,7 @@ local function onSubmit(selected, scrollIndex, args)
 
     local duplicate, desc = menu.options[selected].set(scrollIndex)
 
-    local success = require('client.utils.installMod')(duplicate, 'colors', {
+    local success = InstallMod(duplicate, 'colors', {
         description = desc,
         icon = 'fa-solid fa-spray-can',
     })

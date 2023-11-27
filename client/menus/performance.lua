@@ -1,8 +1,7 @@
-local getModLabel = require('client.utils.getModLabel')
 local originalMods = {}
 local originalTurbo
 local lastIndex
-local VehicleClass = require('client.utils.enums.VehicleClass')
+local VehicleClass = require('client.enums.VehicleClass')
 
 local function priceLabel(price)
     if type(price) ~= 'table' then
@@ -33,7 +32,7 @@ local function performance()
         local modLabels = {}
         modLabels[1] = Lang:t('menus.general.stock')
         for i = -1, modCount - 1 do
-            modLabels[i + 2] = getModLabel(vehicle, mod.id, i)
+            modLabels[i + 2] = GetModLabel(vehicle, mod.id, i)
         end
 
         local currentMod = GetVehicleMod(vehicle, mod.id)
@@ -100,7 +99,7 @@ local function onSubmit(selected, scrollIndex)
 
     local duplicate, desc = menu.options[selected].set(scrollIndex)
 
-    local success = require('client.utils.installMod')(duplicate, menu.options[selected].id, {
+    local success = InstallMod(duplicate, menu.options[selected].id, {
         description = desc,
     }, scrollIndex)
 

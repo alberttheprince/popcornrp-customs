@@ -1,7 +1,6 @@
-local getModLabel = require('client.utils.getModLabel')
 local originalMods = {}
 partsLastIndex = 1
-local VehicleClass = require('client.utils.enums.VehicleClass')
+local VehicleClass = require('client.enums.VehicleClass')
 
 local function parts()
     local options = {}
@@ -20,7 +19,7 @@ local function parts()
         local modLabels = {}
         modLabels[1] = Lang:t('menus.general.stock')
         for i = -1, modCount - 1 do
-            modLabels[i + 2] = getModLabel(vehicle, mod.id, i)
+            modLabels[i + 2] = GetModLabel(vehicle, mod.id, i)
         end
 
         local currentMod = GetVehicleMod(vehicle, mod.id)
@@ -88,7 +87,7 @@ local function onSubmit(selected, scrollIndex, args)
 
     local duplicate, desc = menu.options[selected].set(scrollIndex)
 
-    local success = require('client.utils.installMod')(duplicate, 'cosmetic', {
+    local success = InstallMod(duplicate, 'cosmetic', {
         description = desc,
     })
 
