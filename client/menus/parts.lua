@@ -1,6 +1,34 @@
 local originalMods = {}
 partsLastIndex = 1
 local VehicleClass = require('client.enums.VehicleClass')
+local originalPlateIndex
+
+local function plateIndex()
+    originalPlateIndex = GetVehicleNumberPlateTextIndex(vehicle)
+
+    local plateIndexLabels = {}
+    for i, v in ipairs(Config.PlateIndexes) do
+        plateIndexLabels[i] = v.label
+    end
+
+    local option = {
+        id = 'plate_index',
+        label = Lang:t('menus.options.plateIndex.title'),
+        description = ('%s%s'):format(Config.Currency, Config.Prices['cosmetic']),
+        close = true,
+        values = plateIndexLabels,
+        set = function(index)
+            SetVehicleNumberPlateTextIndex(vehicle, index - 1)
+            return originalPlateIndex == index - 1, Lang:t('menus.options.plateIndex.installed', {plate = plateIndexLabels[index]})
+        end,
+        restore = function()
+            SetVehicleNumberPlateTextIndex(vehicle, originalPlateIndex)
+        end,
+        defaultIndex = originalPlateIndex + 1,
+    }
+
+    return option
+end
 
 local function parts()
     local options = {}
@@ -54,7 +82,7 @@ local function parts()
         }
     end
 
-    options[#options + 1] = require('client.options.plateindex')()
+    options[#options + 1] = plateIndex()
 
     table.sort(options, function(a, b)
         return a.label < b.label
