@@ -74,6 +74,6 @@ CreateThread(function()
     end
 end)
 
-lib.callback.register('customs:client:zone', function()
+lib.callback.register('qbx_customs:client:zone', function()
     return zoneId
 end)

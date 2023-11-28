@@ -25,7 +25,7 @@ function InstallMod(duplicate, mod, props, level)
         return false
     end
 
-    local success = lib.callback.await('customs:server:pay', false, mod, level)
+    local success = lib.callback.await('qbx_customs:server:pay', false, mod, level)
     if success then
         exports.qbx_core:Notify(
             props?.title or Lang:t('notifications.props.installTitle'),

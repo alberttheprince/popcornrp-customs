@@ -77,7 +77,7 @@ local function disableControls()
 end
 
 local function repair()
-    local success = lib.callback.await('customs:server:repair', false, GetVehicleBodyHealth(vehicle))
+    local success = lib.callback.await('qbx_customs:server:repair', false, GetVehicleBodyHealth(vehicle))
     if success then
         exports.qbx_core:Notify(Lang:t('notifications.success.repaired'), 'success')
         SendNUIMessage({sound = true})
@@ -117,10 +117,10 @@ menu.onClose = function()
         icon = 'fa-solid fa-car',
         position = 'left-center',
     })
-    TriggerServerEvent('customs:server:saveVehicleProps')
+    TriggerServerEvent('qbx_customs:server:saveVehicleProps')
 end
 
-lib.callback.register('customs:client:vehicleProps', function()
+lib.callback.register('qbx_customs:client:vehicleProps', function()
     return lib.getVehicleProperties(vehicle)
 end)
 

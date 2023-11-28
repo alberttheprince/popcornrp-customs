@@ -29,8 +29,8 @@ local function removeMoney(source, amount)
 end
 
 -- Won't charge money for mods if the player's job is in the list
-lib.callback.register('customs:server:pay', function(source, mod, level)
-    local zone = lib.callback.await('customs:client:zone', source)
+lib.callback.register('qbx_customs:server:pay', function(source, mod, level)
+    local zone = lib.callback.await('qbx_customs:client:zone', source)
 
     for i, v in ipairs(Config.Zones) do
         if i == zone and v.freeMods then
@@ -47,8 +47,8 @@ lib.callback.register('customs:server:pay', function(source, mod, level)
 end)
 
 -- Won't charge money for repairs if the player's job is in the list
-lib.callback.register('customs:server:repair', function(source, bodyHealth)
-    local zone = lib.callback.await('customs:client:zone', source)
+lib.callback.register('qbx_customs:server:repair', function(source, bodyHealth)
+    local zone = lib.callback.await('qbx_customs:client:zone', source)
 
     for i, v in ipairs(Config.Zones) do
         if i == zone and v.freeRepair then
@@ -75,9 +75,9 @@ local function IsVehicleOwned(plate)
 end
 
 --Copied from qb-mechanicjob
-RegisterNetEvent('customs:server:saveVehicleProps', function()
+RegisterNetEvent('qbx_customs:server:saveVehicleProps', function()
     local src = source --[[@as number]]
-    local vehicleProps = lib.callback.await('customs:client:vehicleProps', src)
+    local vehicleProps = lib.callback.await('qbx_customs:client:vehicleProps', src)
     if IsVehicleOwned(vehicleProps.plate) then
         exports.oxmysql.update('UPDATE player_vehicles SET mods = ? WHERE plate = ?', {json.encode(vehicleProps), vehicleProps.plate})
     end
