@@ -255,10 +255,10 @@ local function livery()
         set = function(index)
             if originalLivery.old then
                 SetVehicleLivery(vehicle, index - 1)
-                return originalLivery.index == index - 1, Lang:t('menus.options.general.installed', {element = liveryLabels[index]})
+                return originalLivery.index == index - 1, Lang:t('menus.general.installed', {element = liveryLabels[index]})
             else
                 SetVehicleMod(vehicle, 48, index - 2, false)
-                return originalLivery.index == index - 2, Lang:t('menus.options.general.installed', {element = liveryLabels[index]})
+                return originalLivery.index == index - 2, Lang:t('menus.general.installed', {element = liveryLabels[index]})
             end
         end,
         restore = function()

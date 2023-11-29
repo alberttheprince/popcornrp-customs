@@ -20,7 +20,7 @@ local function neon()
             defaultIndex = enabled and 2 or 1,
             set = function(index)
                 SetVehicleNeonLightEnabled(vehicle, i - 1, index == 2)
-                return originalNeon[i] == (index == 2), Lang:t('menus.neon.neon', {label = Config.Neon[i].label, state = index == 2 and string.lower(Lang:t('menus.genral.enabled')) or string.lower(Lang:t('menus.genral.disabled'))})
+                return originalNeon[i] == (index == 2), Lang:t('menus.neon.neon', {label = Config.Neon[i].label, state = index == 2 and string.lower(Lang:t('menus.general.enabled')) or string.lower(Lang:t('menus.general.disabled'))})
             end,
             restore = function()
                 SetVehicleNeonLightEnabled(vehicle, i - 1, originalNeon[i])

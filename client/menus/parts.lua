@@ -62,7 +62,7 @@ local function parts()
             defaultIndex = currentMod + 2,
             set = function(index)
                 SetVehicleMod(vehicle, mod.id, index - 2, false)
-                return originalMods[mod.id] == index - 2, Lang:t('menus.options.general.installed', {element = modLabels[index]})
+                return originalMods[mod.id] == index - 2, Lang:t('menus.general.installed', {element = modLabels[index]})
             end,
             restore = function()
                 SetVehicleMod(vehicle, mod.id, originalMods[mod.id], false)

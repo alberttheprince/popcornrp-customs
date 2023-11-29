@@ -63,12 +63,12 @@ local function performance()
             id = 18,
             label = Lang:t('menus.performance.turbo'),
             description = ('%s%s'):format(Config.Currency, Config.Prices[18]),
-            values = {Lang:t('menus.genral.enabled'), Lang:t('menus.genral.disabled')},
+            values = {Lang:t('menus.general.disabled'), Lang:t('menus.general.enabled')},
             close = true,
             defaultIndex = originalTurbo and 2 or 1,
             set = function(index)
                 ToggleVehicleMod(vehicle, 18, index == 2)
-                return originalTurbo == (index == 2), ('%s %s'):format(Lang:t('menus.performance.turbo'), index == 2 and string.lower(Lang:t('menus.genral.enabled')) or string.lower(Lang:t('menus.genral.disabled')))
+                return originalTurbo == (index == 2), ('%s %s'):format(Lang:t('menus.performance.turbo'), index == 2 and string.lower(Lang:t('menus.general.enabled')) or string.lower(Lang:t('menus.general.disabled')))
             end,
             restore = function()
                 ToggleVehicleMod(vehicle, 18, originalTurbo)

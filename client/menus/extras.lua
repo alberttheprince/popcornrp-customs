@@ -14,10 +14,10 @@ local function extras()
             label = ('Extra %d'):format(i),
             description = ('%s%s'):format(Config.Currency, Config.Prices['cosmetic']),
             close = true,
-            values = {Lang:t('menus.genral.enabled'), Lang:t('menus.genral.disabled')},
+            values = {Lang:t('menus.general.enabled'), Lang:t('menus.general.disabled')},
             set = function(selected, index)
                 SetVehicleExtra(vehicle, i, index - 1)
-                return originalExtras[i] == (index - 1 == 0), ('%s %s'):format(options[selected].label, index == 1 and string.lower(Lang:t('menus.genral.enabled')) or string.lower(Lang:t('menus.genral.disabled')))
+                return originalExtras[i] == (index - 1 == 0), ('%s %s'):format(options[selected].label, index == 1 and string.lower(Lang:t('menus.general.enabled')) or string.lower(Lang:t('menus.general.disabled')))
             end,
             restore = function()
                 SetVehicleExtra(vehicle, i, not originalExtras[i])

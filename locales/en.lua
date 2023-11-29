@@ -41,11 +41,12 @@ local Translations = {
             installed = '%{neon} neon installed'
         },
         paint = {
-            title = 'Cosmetics - Parts',
+            title = 'Cosmetics - Colors',
             primary = 'Primary paint',
             secondary = 'Secondary paint'
         },
         parts = {
+            title = 'Cosmetics - Parts',
             wheels = 'Wheels',
         },
         performance = {
