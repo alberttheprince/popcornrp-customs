@@ -1,6 +1,13 @@
 # popcornrp-customs
 A free-to-use and modify vehicle customization for FiveM using ox-lib
 
+
+**Framework specific version by the community:**
+- [QBox](https://github.com/Qbox-project/qbx_customs)
+- [ND Framework](https://github.com/TheStoicBear/popcornrp-customs)
+- [ESX](https://github.com/Sampuke/popcornrp-customs)
+- Qb-core/Oxcore (This one duh!)
+
 This release is a thank you to the FiveM open-source community and all the developers who have poured hours of their free time into creating helpful, free resources that I've used on my servers in the past and continue to use. Thank you!
 
 Thank you, Jorn (Discord: @Jorn#0008), for his hard work on this resource and the Popcorn Roleplay Community for testing and supporting the development of this resource. Come join our server to experience our unique "Casually Serious" RP community!
