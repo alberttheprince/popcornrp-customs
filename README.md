@@ -6,7 +6,7 @@ A free-to-use and modify vehicle customization for FiveM using ox-lib
 - [QBox](https://github.com/Qbox-project/qbx_customs)
 - [ND Framework](https://github.com/TheStoicBear/popcornrp-customs)
 - [ESX](https://github.com/Sampuke/popcornrp-customs)
-- Qb-core/Oxcore (This one duh!)
+- QbCore/Oxcore (This one duh!)
 
 This release is a thank you to the FiveM open-source community and all the developers who have poured hours of their free time into creating helpful, free resources that I've used on my servers in the past and continue to use. Thank you!
 
