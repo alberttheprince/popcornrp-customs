@@ -70,10 +70,11 @@ CreateThread(function()
             local center = calculatePolyzoneCenter(v.points)
             local blip = AddBlipForCoord(center.x, center.y, center.z)
             SetBlipSprite(blip, 72)
+            SetBlipColour(blip, v.blipColor or 0)
             SetBlipScale(blip, 0.8)
             SetBlipAsShortRange(blip, true)
             BeginTextCommandSetBlipName('STRING')
-            AddTextComponentSubstringPlayerName('Customs')
+            AddTextComponentSubstringPlayerName(v.blipLabel or 'Customs')
             EndTextCommandSetBlipName(blip)
         end
     end

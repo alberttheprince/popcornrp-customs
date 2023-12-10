@@ -22,6 +22,8 @@ Config.Zones = {
 --     {
 --         freeRepair = { 'police' },
 --         freeMods = { 'ambulance' },
+--         blipLabel = "Benny's",
+--         blipColor = 5,
 --         points = {
 --             vec3(-344.36, -121.92, 38.60),
 --             vec3(-319.43, -130.65, 38.60),

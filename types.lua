@@ -4,4 +4,6 @@
 ---@field freeMods string[]? -- Array of jobs that can modify vehicles for free
 ---@field job string[]? -- Array of jobs that can access the zone
 ---@field hideBlip boolean? -- Hide the blip on the map
+---@field blipLabel string? -- Name for the blip on the map
+---@field blipColor number? -- Color for the blip on the map
 ---@field points vector3[] -- Array of points that make up the zone
