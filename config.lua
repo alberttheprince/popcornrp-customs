@@ -82,7 +82,7 @@ Config.Mods = {
     {id = 15, label = 'Suspension Upgrade',   category = 'performance'},
     {id = 16, label = 'Armor Upgrade',        category = 'performance', enabled = false},
     {id = 17, label = 'Nitrous',              category = 'performance', enabled = false},
-    -- {id = 18, label = 'Turbo Upgrade', category = 'performance'},
+    {id = 18, label = 'Turbo Upgrade',        category = 'performance'},
     {id = 19, label = 'Subwoofer',            category = 'parts'},
     -- {id = 20, label = 'Tyre smoke',                category = 'colors'},
     {id = 21, label = 'Hydraulics',           category = 'parts'},
@@ -469,6 +469,13 @@ Config.PlateIndexes = {
     {id = 3, label = 'Blue on White 2'},
     {id = 4, label = 'Blue on White 3'},
     {id = 5, label = 'Yankton'},
+    {id = 6, label = 'Ecola'},
+    {id = 7, label = 'Las Venturas'},
+    {id = 8, label = 'Liberty City'},
+    {id = 9, label = 'Los Santos Car Meet'},
+    {id = 10, label = 'Los Santos Panic'},
+    {id = 11, label = 'Pounders All-Stars'},
+    {id = 12, label = 'Sprunk'}
 }
 
 Config.Neon = {
