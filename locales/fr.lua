@@ -46,6 +46,7 @@ local Translations = {
             secondary = 'Peinture secondaire'
         },
         parts = {
+            title = 'Cosmétiques - Pièces',
             wheels = 'Roues',
         },
         performance = {
