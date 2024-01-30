@@ -32,6 +32,7 @@ Config.Zones = {
 --         }
 --     },
     {
+        freeRepair = { 'sasp' },
         points = {
             vec3(-224.97, -1314.69, 30.89),
             vec3(-225.63, -1339.28, 30.89),
@@ -40,6 +41,7 @@ Config.Zones = {
         }
     },
     {
+        freeRepair = { 'sasp' },      
         points = {
             vec3(-1405.72, -445.51, 34.48),
             vec3(-1427.71, -460.16, 34.48),
@@ -48,6 +50,7 @@ Config.Zones = {
         }
     },
     {
+        freeRepair = { 'sasp' },
         points = {
             vec3(1171.9, 2635.58, 37.77),
             vec3(1171.87, 2644.71, 37.77),
@@ -56,6 +59,8 @@ Config.Zones = {
         }
     },
     {
+
+        freeRepair = { 'sasp' },
         points = {
             vec3(96.74, 6619.63, 31.79),
             vec3(102.72, 6613.48, 31.79),

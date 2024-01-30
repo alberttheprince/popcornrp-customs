@@ -21,14 +21,6 @@ local menu = {
 }
 
 local function main()
-    if GetVehicleBodyHealth(vehicle) < 1000.0 then
-        return {{
-            label = 'Repair',
-            description = ('%s%d'):format(Config.Currency, math.ceil(1000 - GetVehicleBodyHealth(vehicle))),
-            close = true,
-        }}
-    end
-
     local options = {
         {
             label = 'Performance',
@@ -81,34 +73,6 @@ local function disableControls()
     end)
 end
 
-local function repair()
-    local success = lib.callback.await('customs:server:repair', false, GetVehicleBodyHealth(vehicle))
-    if success then
-        lib.notify({
-            title = 'Customs',
-            description = 'Vehicle repaired!',
-            position = 'top',
-            type = 'success'
-        })
-        SendNUIMessage({sound = true})
-        SetVehicleBodyHealth(vehicle, 1000.0)
-        SetVehicleEngineHealth(vehicle, 1000.0)
-        local fuelLevel = GetVehicleFuelLevel(vehicle)
-        SetVehicleFixed(vehicle)
-        SetVehicleFuelLevel(vehicle, fuelLevel)
-    else
-        lib.notify({
-            title = 'Customs',
-            description = 'You don\'t have enough money!',
-            position = 'top',
-            type = 'error'
-        })
-    end
-
-    menu.options = main()
-    lib.setMenuOptions(menu.id, menu.options)
-    lib.showMenu(menu.id, 1)
-end
 
 local function onSubmit(selected, scrollIndex, args)
     if menu.options[selected].label == 'Repair' then
