@@ -37,7 +37,10 @@ function InstallMod(duplicate, mod, props, level)
             props?.icon or 'fa-solid fa-wrench',
             props?.iconColor
         )
-        SendNUIMessage({sound = true})
+        qbx.playAudio({
+            audioName = 'PICK_UP',
+            audioRef = 'HUD_FRONTEND_DEFAULT_SOUNDSET'
+        })
         return true
     end
 
