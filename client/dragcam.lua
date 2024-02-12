@@ -8,6 +8,7 @@ local gRadiusMax = nil
 local gRadiusMin = nil
 local scaleform = nil
 local scrollIncrements = nil
+local isFirstPersonView = false
 
 local function cos(degrees)
     return math.cos(math.rad(degrees))
@@ -93,13 +94,15 @@ local function inputListener()
     setCamPosition() -- Set initial cam position, otherwise cam will remain at player until first left click
     CreateThread(function()
         while running do
-            SetMouseCursorActiveThisFrame()
-            disableCamMovement()
             disablePlayerMovement()
+            if not isFirstPersonView then
+                SetMouseCursorActiveThisFrame()
+                disableCamMovement()
 
-            if IsDisabledControlJustPressed(0, 24) or IsControlJustPressed(0, 24) then
-                SetMouseCursorSprite(4)
-                mouseDownListener()
+                if IsDisabledControlJustPressed(0, 24) or IsControlJustPressed(0, 24) then
+                    SetMouseCursorSprite(4)
+                    mouseDownListener()
+                end
             end
 
             if IsDisabledControlJustReleased(0, 14) or IsControlJustReleased(0, 14) then
@@ -111,6 +114,27 @@ local function inputListener()
                 if gRadius - scrollIncrements >= gRadiusMin then
                     gRadius -= scrollIncrements
                     setCamPosition()
+                end
+            end
+
+            if IsControlJustPressed(0, 22) or IsControlJustPressed(0, 22) then
+                local doors = GetNumberOfVehicleDoors(cache.vehicle)
+                for i = 0, doors do
+                    if GetVehicleDoorAngleRatio(cache.vehicle, i) > 0 then
+                        SetVehicleDoorShut(cache.vehicle, i, false)
+                    else
+                        SetVehicleDoorOpen(cache.vehicle, i, false, false)
+                    end
+                end
+            end
+
+            if IsDisabledControlJustPressed(0, 0) or IsDisabledControlJustPressed(0, 0) then
+                isFirstPersonView = not isFirstPersonView
+                if isFirstPersonView then
+                    SetCamViewModeForContext(1, 4)
+                    RenderScriptCams(false, true, 0, true, false)
+                else
+                    RenderScriptCams(true, true, 0, true, false)
                 end
             end
 
@@ -143,6 +167,16 @@ local function showInstructionalButtons()
         BeginScaleformMovieMethod(scaleform, 'SET_DATA_SLOT')
         ScaleformMovieMethodAddParamInt(2)
         instructionalButton(15, locale('dragCam.zoomIn'))
+        EndScaleformMovieMethod()
+
+        BeginScaleformMovieMethod(scaleform, 'SET_DATA_SLOT')
+        ScaleformMovieMethodAddParamInt(3)
+        instructionalButton(22, Lang:t('dragCam.toggleDoors'))
+        EndScaleformMovieMethod()
+
+        BeginScaleformMovieMethod(scaleform, 'SET_DATA_SLOT')
+        ScaleformMovieMethodAddParamInt(4)
+        instructionalButton(0, Lang:t('dragCam.changeView'))
         EndScaleformMovieMethod()
 
         BeginScaleformMovieMethod(scaleform, 'DRAW_INSTRUCTIONAL_BUTTONS')
@@ -181,6 +215,7 @@ local function stopDragCam()
     running = false
     RenderScriptCams(false, true, 0, true, false)
     DestroyCam(cam, true)
+    SetCamViewModeForContext(1, 1)
     SetScaleformMovieAsNoLongerNeeded(scaleform)
 end
 

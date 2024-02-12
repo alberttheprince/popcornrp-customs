@@ -14,7 +14,9 @@
     },
     "dragCam": {
         "zoomIn": "Increase zoom",
-        "zoomOut": "Decrease zoom"
+        "zoomOut": "Decrease zoom",
+        "toggleDoors": "Toggle doors",
+        "changeView": "Toggle first person view"
     },
     "textUI": {
         "tune":  "Press [E] to tune your car"
