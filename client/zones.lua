@@ -44,7 +44,7 @@ CreateThread(function()
                     return
                 end
 
-                lib.showTextUI(Lang:t('textUI.tune'), {
+                lib.showTextUI(locale('textUI.tune'), {
                     icon = 'fa-solid fa-car',
                     position = 'left-center',
                 })

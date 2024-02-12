@@ -16,10 +16,10 @@ local function extras()
             label = ('Extra %d'):format(i),
             description = ('%s%s'):format(config.currency, sharedConfig.prices['cosmetic']),
             close = true,
-            values = {Lang:t('menus.general.enabled'), Lang:t('menus.general.disabled')},
+            values = {locale('menus.general.enabled'), locale('menus.general.disabled')},
             set = function(selected, index)
                 SetVehicleExtra(vehicle, i, index - 1)
-                return originalExtras[i] == (index - 1 == 0), ('%s %s'):format(options[selected].label, index == 1 and string.lower(Lang:t('menus.general.enabled')) or string.lower(Lang:t('menus.general.disabled')))
+                return originalExtras[i] == (index - 1 == 0), ('%s %s'):format(options[selected].label, index == 1 and string.lower(locale('menus.general.enabled')) or string.lower(locale('menus.general.disabled')))
             end,
             restore = function()
                 SetVehicleExtra(vehicle, i, not originalExtras[i])
@@ -38,7 +38,7 @@ local menu = {
     id = 'customs-extras',
     canClose = true,
     disableInput = false,
-    title = Lang:t('menus.main.extras'),
+    title = locale('menus.main.extras'),
     position = 'top-left',
     options = {},
 }

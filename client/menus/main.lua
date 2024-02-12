@@ -11,7 +11,7 @@ local menu = {
     id = mainMenuId,
     canClose = true,
     disableInput = false,
-    title = Lang:t("menus.main.title"),
+    title = locale("menus.main.title"),
     position = 'top-left',
     options = {},
 }
@@ -19,7 +19,7 @@ local menu = {
 local function main()
     if GetVehicleBodyHealth(vehicle) < 1000.0 then
         return {{
-            label = Lang:t('menus.main.repair'),
+            label = locale('menus.main.repair'),
             description = ('%s%d'):format(config.currency, math.ceil(1000 - GetVehicleBodyHealth(vehicle))),
             close = true,
         }}
@@ -27,21 +27,21 @@ local function main()
 
     local options = {
         {
-            label = Lang:t('menus.main.performance'),
+            label = locale('menus.main.performance'),
             close = true,
             args = {
                 menu = 'client.menus.performance',
             }
         },
         {
-            label = Lang:t('menus.main.parts'),
+            label = locale('menus.main.parts'),
             close = true,
             args = {
                 menu = 'client.menus.parts',
             }
         },
         {
-            label = Lang:t('menus.main.colors'),
+            label = locale('menus.main.colors'),
             close = true,
             args = {
                 menu = 'client.menus.colors',
@@ -51,7 +51,7 @@ local function main()
 
     if DoesExtraExist(vehicle, 1) then
         options[#options + 1] = {
-            label = Lang:t('menus.main.extras'),
+            label = locale('menus.main.extras'),
             close = true,
             args = {
                 menu = 'client.menus.extras',
@@ -80,7 +80,7 @@ end
 local function repair()
     local success = lib.callback.await('qbx_customs:server:repair', false, GetVehicleBodyHealth(vehicle))
     if success then
-        exports.qbx_core:Notify(Lang:t('notifications.success.repaired'), 'success')
+        exports.qbx_core:Notify(locale('notifications.success.repaired'), 'success')
         SendNUIMessage({sound = true})
         SetVehicleBodyHealth(vehicle, 1000.0)
         SetVehicleEngineHealth(vehicle, 1000.0)
@@ -88,7 +88,7 @@ local function repair()
         SetVehicleFixed(vehicle)
         SetVehicleFuelLevel(vehicle, fuelLevel)
     else
-        exports.qbx_core:Notify(Lang:t('notifications.error.money'), 'error')
+        exports.qbx_core:Notify(locale('notifications.error.money'), 'error')
     end
 
     menu.options = main()
@@ -97,7 +97,7 @@ local function repair()
 end
 
 local function onSubmit(selected, scrollIndex, args)
-    if menu.options[selected].label == Lang:t('menus.main.repair') then
+    if menu.options[selected].label == locale('menus.main.repair') then
         lib.hideMenu(false)
         repair()
         return
@@ -114,7 +114,7 @@ end
 menu.onClose = function()
     inMenu = false
     stopDragCam()
-    lib.showTextUI(Lang:t('textUI.tune'), {
+    lib.showTextUI(locale('textUI.tune'), {
         icon = 'fa-solid fa-car',
         position = 'left-center',
     })

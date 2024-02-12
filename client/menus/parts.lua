@@ -15,13 +15,13 @@ local function plateIndex()
 
     local option = {
         id = 'plate_index',
-        label = Lang:t('menus.options.plateIndex.title'),
+        label = locale('menus.options.plateIndex.title'),
         description = ('%s%s'):format(config.currency, sharedConfig.prices['cosmetic']),
         close = true,
         values = plateIndexLabels,
         set = function(index)
             SetVehicleNumberPlateTextIndex(vehicle, index - 1)
-            return originalPlateIndex == index - 1, Lang:t('menus.options.plateIndex.installed', {plate = plateIndexLabels[index]})
+            return originalPlateIndex == index - 1, locale('menus.options.plateIndex.installed', plateIndexLabels[index])
         end,
         restore = function()
             SetVehicleNumberPlateTextIndex(vehicle, originalPlateIndex)
@@ -47,7 +47,7 @@ local function parts()
         end
 
         local modLabels = {}
-        modLabels[1] = Lang:t('menus.general.stock')
+        modLabels[1] = locale('menus.general.stock')
         for i = -1, modCount - 1 do
             modLabels[i + 2] = GetModLabel(vehicle, mod.id, i)
         end
@@ -64,7 +64,7 @@ local function parts()
             defaultIndex = currentMod + 2,
             set = function(index)
                 SetVehicleMod(vehicle, mod.id, index - 2, false)
-                return originalMods[mod.id] == index - 2, Lang:t('menus.general.installed', {element = modLabels[index]})
+                return originalMods[mod.id] == index - 2, locale('menus.general.installed', modLabels[index])
             end,
             restore = function()
                 SetVehicleMod(vehicle, mod.id, originalMods[mod.id], false)
@@ -76,7 +76,7 @@ local function parts()
 
     if GetVehicleClass(vehicle) ~= VehicleClass.Cycles then
         options[#options + 1] = {
-            label = Lang:t('menus.parts.wheels'),
+            label = locale('menus.parts.wheels'),
             close = true,
             args = {
                 menu = 'client.menus.wheels',
@@ -95,7 +95,7 @@ end
 
 local menu = {
     id = 'customs-parts',
-    title = Lang:t('menus.parts.title'),
+    title = locale('menus.parts.title'),
     canClose = true,
     disableInput = false,
     options = {},

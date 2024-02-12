@@ -1,4 +1,4 @@
-colorsLastIndex = 1
+ColorsLastIndex = 1
 local originalXenon
 local originalToggle
 local originalPearlescent, originalWheelColor
@@ -14,14 +14,14 @@ local function xenon()
     originalXenon = GetVehicleXenonLightsColor(vehicle)
     originalXenon = originalXenon == 255 and -1 or originalXenon
 
-    local xenonLabels = {Lang:t('menus.general.disabled')}
+    local xenonLabels = {locale('menus.general.disabled')}
     for i, v in ipairs(config.xenon) do
         xenonLabels[i + 1] = v.label
     end
 
     local option = {
         id = 'xenon',
-        label = Lang:t('menus.options.xenon.title'),
+        label = locale('menus.options.xenon.title'),
         description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         close = true,
         values = xenonLabels,
@@ -32,7 +32,7 @@ local function xenon()
             end
             ToggleVehicleMod(vehicle, 22, true)
             SetVehicleXenonLightsColor(vehicle, index - 3)
-            return originalXenon == index - 3,Lang:t('menus.options.xenon.installed', {color = xenonLabels[index]})
+            return originalXenon == index - 3,locale('menus.options.xenon.installed', xenonLabels[index])
         end,
         restore = function()
             ToggleVehicleMod(vehicle, 22, originalToggle)
@@ -69,7 +69,7 @@ local function pearlescent()
 
     local option = {
         id = 'pearlescent',
-        label = Lang:t('menus.options.pearlescent'),
+        label = locale('menus.options.pearlescent'),
         description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         ids = ids,
         values = labels,
@@ -103,14 +103,14 @@ local function wheelcolor()
 
     local option = {
         id = 'wheelcolor',
-        label = Lang:t('menus.options.wheelColor'),
+        label = locale('menus.options.wheelColor'),
         description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         ids = ids,
         values = labels,
         close = true,
         set = function(index)
             SetVehicleExtraColours(vehicle, originalPearlescent, ids[index])
-            return originalWheelColor == ids[index], Lang:t('menus.general.applied', {element = labels[index]})
+            return originalWheelColor == ids[index], locale('menus.general.applied', labels[index])
         end,
         restore = function()
             SetVehicleExtraColours(vehicle, originalPearlescent, originalWheelColor)
@@ -131,13 +131,13 @@ local function windowTint()
 
     local option = {
         id = 'window_tint',
-        label = Lang:t('menus.options.windowTint.title'),
+        label = locale('menus.options.windowTint.title'),
         description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         close = true,
         values = windowTintLabels,
         set = function(index)
             SetVehicleWindowTint(vehicle, index - 1)
-            return originalWindowTint == index - 1, Lang:t('menus.options.windowTint.installed', {window = windowTintLabels[index]})
+            return originalWindowTint == index - 1, locale('menus.options.windowTint.installed', windowTintLabels[index])
         end,
         restore = function()
             SetVehicleWindowTint(vehicle, originalWindowTint)
@@ -164,7 +164,7 @@ local function tyresmoke()
 
     local option = {
         id = 'tyre_smoke',
-        label = Lang:t('menus.options.tyreSmoke'),
+        label = locale('menus.options.tyreSmoke'),
         description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         close = true,
         values = smokeLabels,
@@ -172,7 +172,7 @@ local function tyresmoke()
         set = function(index)
             local rgb = config.tyreSmoke[index]
             SetVehicleTyreSmokeColor(vehicle, rgb.r, rgb.g, rgb.b)
-            return originalLabelIndex == index, Lang:t('menus.general.installed', {element = config.tyreSmoke[index].label})
+            return originalLabelIndex == index, locale('menus.general.installed', config.tyreSmoke[index].label)
         end,
         restore = function()
             local rgb = config.tyreSmoke[originalLabelIndex]
@@ -201,7 +201,7 @@ local function interior()
 
     local option = {
         id = 'interior',
-        label = Lang:t('menus.options.interior'),
+        label = locale('menus.options.interior'),
         description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         close = true,
         values = interiorLabels,
@@ -238,10 +238,10 @@ local function livery()
     if originalLivery.old then
         local liveryCount = GetVehicleLiveryCount(vehicle) - 1
         for i = 0, liveryCount do
-            liveryLabels[i + 1] = ('%s %d'):format(Lang:t('menus.options.livery'), i + 1)
+            liveryLabels[i + 1] = ('%s %d'):format(locale('menus.options.livery'), i + 1)
         end
     else
-        liveryLabels[1] = Lang:t('menus.general.stock')
+        liveryLabels[1] = locale('menus.general.stock')
         local liveryCount = GetNumVehicleMods(vehicle, 48) - 1
         for i = 0, liveryCount do
             liveryLabels[i + 2] = ('%s'):format(GetLabelText(GetModTextLabel(vehicle, 48, i)))
@@ -250,17 +250,17 @@ local function livery()
 
     local option = {
         id = 'livery',
-        label = Lang:t('menus.options.livery'),
+        label = locale('menus.options.livery'),
         description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         close = true,
         values = liveryLabels,
         set = function(index)
             if originalLivery.old then
                 SetVehicleLivery(vehicle, index - 1)
-                return originalLivery.index == index - 1, Lang:t('menus.general.installed', {element = liveryLabels[index]})
+                return originalLivery.index == index - 1, locale('menus.general.installed', liveryLabels[index])
             else
                 SetVehicleMod(vehicle, 48, index - 2, false)
-                return originalLivery.index == index - 2, Lang:t('menus.general.installed', {element = liveryLabels[index]})
+                return originalLivery.index == index - 2, locale('menus.general.installed', liveryLabels[index])
             end
         end,
         restore = function()
@@ -281,7 +281,7 @@ local function colors()
     local options = {}
 
     options[#options + 1] = {
-        label = Lang:t('menus.colors.primary'),
+        label = locale('menus.colors.primary'),
         close = true,
         args = {
             menu = 'client.menus.paint',
@@ -292,7 +292,7 @@ local function colors()
     }
 
     options[#options + 1] = {
-        label = Lang:t('menus.colors.secondary'),
+        label = locale('menus.colors.secondary'),
         close = true,
         args = {
             menu = 'client.menus.paint',
@@ -303,7 +303,7 @@ local function colors()
     }
 
     options[#options + 1] = {
-        label = Lang:t('menus.colors.neon'),
+        label = locale('menus.colors.neon'),
         close = true,
         args = {
             menu = 'client.menus.neon',
@@ -331,7 +331,7 @@ end
 
 local menu = {
     id = 'customs-colors',
-    title = Lang:t('menus.colors.cosmetics_colors'),
+    title = locale('menus.colors.cosmetics_colors'),
     canClose = true,
     disableInput = false,
     options = {},
@@ -379,7 +379,7 @@ end
 
 menu.onSelected = function(selected)
     PlaySoundFrontend(-1, 'NAV_UP_DOWN', 'HUD_FRONTEND_DEFAULT_SOUNDSET', true)
-    colorsLastIndex = selected
+    ColorsLastIndex = selected
 end
 
 return function()

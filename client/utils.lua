@@ -11,7 +11,7 @@ function GetModLabel (vehicle, modType, modValue)
         end
     end
 
-    if modValue == -1 then return Lang:t('menus.general.stock') end
+    if modValue == -1 then return locale('menus.general.stock') end
 
     local label = GetModTextLabel(vehicle, modType, modValue)
     return (not label or label == '') and tostring(modValue) or GetLabelText(label)
@@ -23,14 +23,14 @@ end
 ---@param level number?
 function InstallMod(duplicate, mod, props, level)
     if duplicate then
-        exports.qbx_core:Notify(Lang:t('notifications.error.alreadyInstalled'), 'error')
+        exports.qbx_core:Notify(locale('notifications.error.alreadyInstalled'), 'error')
         return false
     end
 
     local success = lib.callback.await('qbx_customs:server:pay', false, mod, level)
     if success then
         exports.qbx_core:Notify(
-            props?.title or Lang:t('notifications.props.installTitle'),
+            props?.title or locale('notifications.props.installTitle'),
             props?.position or 'top',
             props?.duration,
             props?.description,
@@ -46,6 +46,6 @@ function InstallMod(duplicate, mod, props, level)
         return true
     end
 
-    exports.qbx_core:Notify(Lang:t('notifications.error.money'), 'error')
+    exports.qbx_core:Notify(locale('notifications.error.money'), 'error')
     return false
 end

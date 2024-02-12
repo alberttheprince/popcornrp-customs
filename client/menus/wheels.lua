@@ -60,7 +60,7 @@ local function wheels()
             originalRearWheel = GetVehicleMod(vehicle, 24)
             options[#options + 1] = {
                 id = 'rear',
-                label = Lang:t('menus.wheels.bikeRear'),
+                label = locale('menus.wheels.bikeRear'),
                 values = labels,
                 close = true,
                 set = function(_, index)
@@ -88,7 +88,7 @@ local menu = {
     id = 'customs-wheels',
     canClose = true,
     disableInput = false,
-    title = Lang:t('menus.wheels.title'),
+    title = locale('menus.wheels.title'),
     position = 'top-left',
     options = {}
 }
@@ -105,7 +105,7 @@ local function onSubmit(selected, scrollIndex)
     end
 
     local success = InstallMod(duplicate, 'cosmetic', {
-        description = Lang:t('menus.wheels.installed', {category = option.label, wheel = label}),
+        description = locale('menus.wheels.installed', option.label, label),
     })
 
     if not success then

@@ -137,12 +137,12 @@ local function showInstructionalButtons()
 
         BeginScaleformMovieMethod(scaleform, 'SET_DATA_SLOT')
         ScaleformMovieMethodAddParamInt(1)
-        instructionalButton(14, Lang:t('dragCam.zoomOut'))
+        instructionalButton(14, locale('dragCam.zoomOut'))
         EndScaleformMovieMethod()
 
         BeginScaleformMovieMethod(scaleform, 'SET_DATA_SLOT')
         ScaleformMovieMethodAddParamInt(2)
-        instructionalButton(15, Lang:t('dragCam.zoomIn'))
+        instructionalButton(15, locale('dragCam.zoomIn'))
         EndScaleformMovieMethod()
 
         BeginScaleformMovieMethod(scaleform, 'DRAW_INSTRUCTIONAL_BUTTONS')

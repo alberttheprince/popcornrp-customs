@@ -1,3 +1,4 @@
+lib.versionCheck('Qbox-project/qbx_customs')
 local sharedConfig = require 'config.shared'
 
 ---@return number
@@ -18,11 +19,11 @@ local function removeMoney(source, amount)
     local bankBalance = player.Functions.GetMoney('bank')
 
     if cashBalance >= amount then
-        player.Functions.RemoveMoney('cash', amount, Lang:t('general.payReason'))
+        player.Functions.RemoveMoney('cash', amount, locale('general.payReason'))
         return true
     elseif bankBalance >= amount then
-        player.Functions.RemoveMoney('bank', amount, Lang:t('general.payReason'))
-        exports.qbx_core:Notify(source, Lang:t('notifications.success.paid', {amount = amount}), 'success')
+        player.Functions.RemoveMoney('bank', amount, locale('general.payReason'))
+        exports.qbx_core:Notify(source, locale('notifications.success.paid', amount), 'success')
         return true
     end
 

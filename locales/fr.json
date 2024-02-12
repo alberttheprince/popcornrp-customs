@@ -1,0 +1,91 @@
+{
+    "notifications": {
+        "success": {
+            "repaired": "Véhicule réparé !",
+            "paid": "Vous avez payé %s depuis votre compte en banque"
+        },
+        "error": {
+            "money": "Vous n'avez pas assez d'argent !",
+            "alreadyInstalled": "Vous avez déjà installé cette modification"
+        },
+        "props": {
+            "installTitle": "Customs"
+        }
+    },
+    "dragCam": {
+        "zoomIn": "Zoomer",
+        "zoomOut": "Dézoomer"
+    },
+    "textUI": {
+        "tune": "Appuyez sur [E] pour personnaliser votre voiture"
+    },
+    "menus": {
+        "main": {
+            "title": "Popcorn Customs",
+            "repair": "Réparer",
+            "performance": "Performance",
+            "parts": "Cosmétiques - Pièces",
+            "colors": "Cosmétiques - Couleurs",
+            "extras": "Extras"
+        },
+        "colors": {
+            "primary": "Peinture primaire",
+            "secondary": "Peinture secondaire",
+            "neon": "Néon",
+            "cosmetics_colors": "Cosmétiques - Couleurs"
+        },
+        "neon": {
+            "title": "Néon",
+            "neon": "Néon %s, %s",
+            "color": "Couleur du néon",
+            "installed": "Néon %s installé"
+        },
+        "paint": {
+            "title": "Cosmétiques - Pièces",
+            "primary": "Peinture primaire",
+            "secondary": "Peinture secondaire"
+        },
+        "parts": {
+            "title": "Cosmétiques - Pièces",
+            "wheels": "Roues"
+        },
+        "performance": {
+            "title": "Performance",
+            "turbo": "Turbo"
+        },
+        "wheels": {
+            "title": "Roues",
+            "bikeRear": "Roue arrière de moto",
+            "installed": "%s %S installé"
+        },
+        "options": {
+            "interior": "Intérieur",
+            "livery": "Livrée",
+            "pearlescent": "Nacrée",
+            "plateIndex": {
+                "title": "Index de plaque",
+                "installed": "Plaque %s installée"
+            },
+            "tyreSmoke": "Fumée de pneus",
+            "wheelColor": "Couleur des roues",
+            "windowTint": {
+                "title": "Teinte des vitres",
+                "installed": "%s vitres installées"
+            },
+            "xenon": {
+                "title": "Xénon",
+                "installed": "Xénon %s installé"
+            }
+        },
+        "general": {
+            "stock": "Stock",
+            "enabled": "Activé",
+            "disabled": "Désactivé",
+            "installed": "%s installé",
+            "applied": "%s appliqué"
+        }
+    },
+    "general": {
+        "payReason": "Customs"
+    }
+}
