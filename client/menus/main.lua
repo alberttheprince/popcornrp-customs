@@ -5,6 +5,7 @@ local inMenu = false
 local dragcam = require('client.dragcam')
 local startDragCam = dragcam.startDragCam
 local stopDragCam = dragcam.stopDragCam
+local config = require 'config.client'
 
 local menu = {
     id = mainMenuId,
@@ -19,7 +20,7 @@ local function main()
     if GetVehicleBodyHealth(vehicle) < 1000.0 then
         return {{
             label = Lang:t('menus.main.repair'),
-            description = ('%s%d'):format(Config.Currency, math.ceil(1000 - GetVehicleBodyHealth(vehicle))),
+            description = ('%s%d'):format(config.currency, math.ceil(1000 - GetVehicleBodyHealth(vehicle))),
             close = true,
         }}
     end

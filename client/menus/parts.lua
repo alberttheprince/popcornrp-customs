@@ -2,19 +2,21 @@ local originalMods = {}
 partsLastIndex = 1
 local VehicleClass = require('client.enums.VehicleClass')
 local originalPlateIndex
+local config = require 'config.client'
+local sharedConfig = require 'config.shared'
 
 local function plateIndex()
     originalPlateIndex = GetVehicleNumberPlateTextIndex(vehicle)
 
     local plateIndexLabels = {}
-    for i, v in ipairs(Config.PlateIndexes) do
+    for i, v in ipairs(config.plateIndexes) do
         plateIndexLabels[i] = v.label
     end
 
     local option = {
         id = 'plate_index',
         label = Lang:t('menus.options.plateIndex.title'),
-        description = ('%s%s'):format(Config.Currency, Config.Prices['cosmetic']),
+        description = ('%s%s'):format(config.currency, sharedConfig.prices['cosmetic']),
         close = true,
         values = plateIndexLabels,
         set = function(index)
@@ -33,7 +35,7 @@ end
 local function parts()
     local options = {}
 
-    for _, mod in ipairs(Config.Mods) do
+    for _, mod in ipairs(config.mods) do
         local modCount = GetNumVehicleMods(vehicle, mod.id)
 
         if mod.category ~= 'parts'
@@ -56,7 +58,7 @@ local function parts()
         options[#options + 1] = {
             id = mod.id,
             label = mod.label,
-            description = ('%s%s'):format(Config.Currency, Config.Prices['cosmetic']),
+            description = ('%s%s'):format(config.currency, sharedConfig.prices['cosmetic']),
             values = modLabels,
             close = true,
             defaultIndex = currentMod + 2,

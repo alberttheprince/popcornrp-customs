@@ -11,7 +11,6 @@ shared_scripts {
     '@qbx_core/shared/locale.lua',
     'locales/en.lua',
     'locales/*.lua',
-    'config.lua'
 }
 
 client_scripts {
@@ -25,6 +24,7 @@ client_scripts {
 server_script 'server/main.lua'
 
 files {
+    'config/*.lua',
     'client/**/*.lua',
     'carcols_gen9.meta',
     'carmodcols_gen9.meta',

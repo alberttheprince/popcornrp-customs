@@ -4,6 +4,8 @@ local originalRearWheel
 local lastIndex = 1
 local WheelType = require('client.enums.WheelType')
 local VehicleClass = require('client.enums.VehicleClass')
+local config = require 'config.client'
+local sharedConfig = require 'config.shared'
 
 ---@param wheelType WheelType
 local function isWheelTypeAllowed(wheelType)
@@ -32,7 +34,7 @@ local function wheels()
     originalWheelType = GetVehicleWheelType(vehicle)
     originalMod = GetVehicleMod(vehicle, 23)
 
-    for _, category in ipairs(Config.Wheels) do
+    for _, category in ipairs(config.wheels) do
         if not isWheelTypeAllowed(category.id) then goto continue end
         SetVehicleWheelType(vehicle, category.id)
         local modCount = GetNumVehicleMods(vehicle, 23)
@@ -44,7 +46,7 @@ local function wheels()
         options[#options + 1] = {
             id = category.id,
             label = category.label,
-            description = ('%s%s'):format(Config.Currency, Config.Prices['cosmetic']),
+            description = ('%s%s'):format(config.currency, sharedConfig.prices['cosmetic']),
             values = labels,
             close = true,
             set = function(wheelType, index)

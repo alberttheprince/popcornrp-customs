@@ -1,6 +1,8 @@
 local originalPaint = {}
 local lastIndex
 local primaryPaint
+local config = require 'config.client'
+local sharedConfig = require 'config.shared'
 
 local function paintMods()
     local options = {}
@@ -9,7 +11,7 @@ local function paintMods()
     originalPaint.primary = primary
     originalPaint.secondary = secondary
 
-    for category, values in pairs(Config.Paints) do
+    for category, values in pairs(config.paints) do
         local labels = {}
         local ids = {}
         local selectedIndex = 1
@@ -24,7 +26,7 @@ local function paintMods()
 
         options[#options + 1] = {
             ids = ids,
-            description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
+            description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
             label = category,
             values = labels,
             close = true,

@@ -1,5 +1,6 @@
 local zoneId
 local allowAccess = false
+local sharedConfig = require 'config.shared'
 
 ---@param vertices vector3[]
 ---@return vector3
@@ -20,7 +21,7 @@ local function calculatePolyzoneCenter(vertices)
 end
 
 CreateThread(function()
-    for _, v in ipairs(Config.Zones) do
+    for _, v in ipairs(sharedConfig.zones) do
         lib.zones.poly({
             points = v.points,
             onEnter = function(s)

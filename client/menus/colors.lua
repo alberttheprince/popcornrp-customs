@@ -6,6 +6,8 @@ local originalWindowTint
 local originalLabelIndex = 1
 local originalInterior
 local originalLivery = {}
+local config = require 'config.client'
+local sharedConfig = require 'config.shared'
 
 local function xenon()
     originalToggle = IsToggleModOn(vehicle, 22)
@@ -13,14 +15,14 @@ local function xenon()
     originalXenon = originalXenon == 255 and -1 or originalXenon
 
     local xenonLabels = {Lang:t('menus.general.disabled')}
-    for i, v in ipairs(Config.Xenon) do
+    for i, v in ipairs(config.xenon) do
         xenonLabels[i + 1] = v.label
     end
 
     local option = {
         id = 'xenon',
         label = Lang:t('menus.options.xenon.title'),
-        description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
+        description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         close = true,
         values = xenonLabels,
         set = function(index)
@@ -48,7 +50,7 @@ local function pearlescent()
     local ids = {}
     local labels = {}
 
-    for i, colour in ipairs(Config.Paints.Classic) do
+    for i, colour in ipairs(config.paints.Classic) do
         ids[i] = colour.id
         labels[i] = colour.label
         if colour.id == originalPearlescent then
@@ -57,7 +59,7 @@ local function pearlescent()
     end
 
     local size = #ids
-    for i, colour in ipairs(Config.Paints.Chameleon) do
+    for i, colour in ipairs(config.paints.Chameleon) do
         ids[size + i] = colour.id
         labels[size + i] = colour.label
         if colour.id == originalPearlescent then
@@ -68,7 +70,7 @@ local function pearlescent()
     local option = {
         id = 'pearlescent',
         label = Lang:t('menus.options.pearlescent'),
-        description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
+        description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         ids = ids,
         values = labels,
         close = true,
@@ -91,7 +93,7 @@ local function wheelcolor()
     local ids = {}
     local labels = {}
 
-    for i, color in ipairs(Config.Paints.Classic) do
+    for i, color in ipairs(config.paints.Classic) do
         ids[i] = color.id
         labels[i] = color.label
         if color.id == originalWheelColor then
@@ -102,7 +104,7 @@ local function wheelcolor()
     local option = {
         id = 'wheelcolor',
         label = Lang:t('menus.options.wheelColor'),
-        description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
+        description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         ids = ids,
         values = labels,
         close = true,
@@ -123,14 +125,14 @@ local function windowTint()
     originalWindowTint = GetVehicleWindowTint(vehicle)
 
     local windowTintLabels = {}
-    for i, v in ipairs(Config.WindowTints) do
+    for i, v in ipairs(config.windowTints) do
         windowTintLabels[i] = v.label
     end
 
     local option = {
         id = 'window_tint',
         label = Lang:t('menus.options.windowTint.title'),
-        description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
+        description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         close = true,
         values = windowTintLabels,
         set = function(index)
@@ -152,7 +154,7 @@ local function tyresmoke()
 
     local rgbValues = {}
     local smokeLabels = {}
-    for i, v in ipairs(Config.TyreSmoke) do
+    for i, v in ipairs(config.tyreSmoke) do
         smokeLabels[i] = v.label
         rgbValues[i] = {r = v.r, g = v.g, b = v.b}
         if v.r == r and v.g == g and v.b == b then
@@ -163,17 +165,17 @@ local function tyresmoke()
     local option = {
         id = 'tyre_smoke',
         label = Lang:t('menus.options.tyreSmoke'),
-        description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
+        description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         close = true,
         values = smokeLabels,
         rgbValues = rgbValues,
         set = function(index)
-            local rgb = Config.TyreSmoke[index]
+            local rgb = config.tyreSmoke[index]
             SetVehicleTyreSmokeColor(vehicle, rgb.r, rgb.g, rgb.b)
-            return originalLabelIndex == index, Lang:t('menus.general.installed', {element = Config.TyreSmoke[index].label})
+            return originalLabelIndex == index, Lang:t('menus.general.installed', {element = config.tyreSmoke[index].label})
         end,
         restore = function()
-            local rgb = Config.TyreSmoke[originalLabelIndex]
+            local rgb = config.tyreSmoke[originalLabelIndex]
             SetVehicleTyreSmokeColor(vehicle, rgb.r, rgb.g, rgb.b)
         end,
         defaultIndex = originalLabelIndex,
@@ -189,7 +191,7 @@ local function interior()
     local interiorIds = {}
     local defaultIndex = 0
 
-    for i, v in ipairs(Config.Paints.Classic) do
+    for i, v in ipairs(config.paints.Classic) do
         interiorLabels[i] = v.label
         interiorIds[i] = v.id
         if v.id == originalInterior then
@@ -200,7 +202,7 @@ local function interior()
     local option = {
         id = 'interior',
         label = Lang:t('menus.options.interior'),
-        description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
+        description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         close = true,
         values = interiorLabels,
         set = function(index)
@@ -249,7 +251,7 @@ local function livery()
     local option = {
         id = 'livery',
         label = Lang:t('menus.options.livery'),
-        description = ('%s%s'):format(Config.Currency, Config.Prices['colors']),
+        description = ('%s%s'):format(config.currency, sharedConfig.prices['colors']),
         close = true,
         values = liveryLabels,
         set = function(index)
