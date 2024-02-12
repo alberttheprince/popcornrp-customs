@@ -2,10 +2,10 @@
     "notifications": {
         "success": {
             "repaired": "Vehicle repaired!",
-            "paid": "You paid $%{amount} from your bank account"
+            "paid": "You paid $%s from your bank account"
         },
         "error": {
-            "money": "You don\"t have enough money!",
+            "money": "You don't have enough money!",
             "alreadyInstalled": "You already have this mod installed"
         },
         "props": {
@@ -38,9 +38,9 @@
         },
         "neon": {
             "title": "Neon",
-            "neon": "Neon %{label}, %{state}",
+            "neon": "Neon %s, %s",
             "color": "Neon color",
-            "installed": "%{neon} neon installed"
+            "installed": "%s neon installed"
         },
         "paint": {
             "title": "Cosmetics - Colors",
@@ -58,7 +58,7 @@
         "wheels": {
             "title": "Wheels",
             "bikeRear": "Bike rear wheel",
-            "installed": "%{category} %{wheel} installed"
+            "installed": "%s %s installed"
         },
         "options": {
             "interior": "Interior",
@@ -66,25 +66,25 @@
             "pearlescent": "Pearlescent",
             "plateIndex": {
                 "title": "Plate Index",
-                "installed": "%{plate} plate installed"
+                "installed": "%s plate installed"
             },
             "tyreSmoke": "Tyre smoke",
             "wheelColor": "Wheel color",
             "windowTint": {
                 "title": "Window Tint",
-                "installed": "%{window} windows installed"
+                "installed": "%s windows installed"
             },
             "xenon": {
                 "title": "Xenon",
-                "installed": "%{color} xenon installed"
+                "installed": "%s xenon installed"
             }
         },
         "general": {
             "stock": "Stock",
             "enabled": "Enabled",
             "disabled": "Disabled",
-            "installed": "%{element} installed",
-            "applied": "%{element} applied"
+            "installed": "%s installed",
+            "applied": "%s applied"
         }
     },
     "general": {
