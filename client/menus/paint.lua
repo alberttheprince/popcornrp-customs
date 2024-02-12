@@ -50,7 +50,7 @@ local menu = {
     options = {},
 }
 
-local function onSubmit(selected, scrollIndex, args)
+local function onSubmit(selected, scrollIndex)
     local option = menu.options[selected]
     local duplicate = option.ids[scrollIndex] == originalPaint[primaryPaint and 'primary' or 'secondary']
 
@@ -65,12 +65,12 @@ local function onSubmit(selected, scrollIndex, args)
     lib.showMenu('customs-paint', lastIndex)
 end
 
-menu.onClose = function(keyPressed)
+menu.onClose = function()
     SetVehicleColours(vehicle, originalPaint.primary, originalPaint.secondary)
-    lib.showMenu('customs-colors', colorsLastIndex)
+    lib.showMenu('customs-colors', ColorsLastIndex)
 end
 
-menu.onSelected = function(selected, secondary, args)
+menu.onSelected = function(selected)
     PlaySoundFrontend(-1, 'NAV_UP_DOWN', 'HUD_FRONTEND_DEFAULT_SOUNDSET', true)
     lastIndex = selected
 end

@@ -71,7 +71,7 @@ local menu = {
     options = {},
 }
 
-local function onSubmit(selected, scrollIndex, args)
+local function onSubmit(selected, scrollIndex)
     local option = menu.options[selected]
 
     for _, v in pairs(menu.options) do
@@ -105,7 +105,7 @@ menu.onClose = function()
     for _, v in pairs(menu.options) do
         v.restore()
     end
-    lib.showMenu('customs-colors', colorsLastIndex)
+    lib.showMenu('customs-colors', ColorsLastIndex)
 end
 
 return function()

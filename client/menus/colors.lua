@@ -361,7 +361,7 @@ local function onSubmit(selected, scrollIndex, args)
     if not success then menu.options[selected].restore() end
 
     lib.setMenuOptions(menu.id, colors())
-    lib.showMenu(menu.id, colorsLastIndex)
+    lib.showMenu(menu.id, ColorsLastIndex)
 end
 
 menu.onSideScroll = function(selected, scrollIndex)

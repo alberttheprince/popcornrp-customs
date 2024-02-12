@@ -43,7 +43,7 @@ local menu = {
     options = {},
 }
 
-local function onSubmit(selected, scrollIndex, args)
+local function onSubmit(selected, scrollIndex)
     local option = menu.options[selected]
 
     for _, v in pairs(menu.options) do
@@ -68,7 +68,7 @@ menu.onSideScroll = function(selected, scrollIndex)
     option.set(selected, scrollIndex)
 end
 
-menu.onSelected = function(selected, secondary, args)
+menu.onSelected = function(selected)
     PlaySoundFrontend(-1, 'NAV_UP_DOWN', 'HUD_FRONTEND_DEFAULT_SOUNDSET', true)
     extrasLastIndex = selected
 end

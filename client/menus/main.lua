@@ -96,7 +96,7 @@ local function repair()
     lib.showMenu(menu.id, 1)
 end
 
-local function onSubmit(selected, scrollIndex, args)
+local function onSubmit(selected, _, args)
     if menu.options[selected].label == locale('menus.main.repair') then
         lib.hideMenu(false)
         repair()

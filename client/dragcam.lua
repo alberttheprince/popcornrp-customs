@@ -171,12 +171,12 @@ local function showInstructionalButtons()
 
         BeginScaleformMovieMethod(scaleform, 'SET_DATA_SLOT')
         ScaleformMovieMethodAddParamInt(3)
-        instructionalButton(22, Lang:t('dragCam.toggleDoors'))
+        instructionalButton(22, locale('dragCam.toggleDoors'))
         EndScaleformMovieMethod()
 
         BeginScaleformMovieMethod(scaleform, 'SET_DATA_SLOT')
         ScaleformMovieMethodAddParamInt(4)
-        instructionalButton(0, Lang:t('dragCam.changeView'))
+        instructionalButton(0, locale('dragCam.changeView'))
         EndScaleformMovieMethod()
 
         BeginScaleformMovieMethod(scaleform, 'DRAW_INSTRUCTIONAL_BUTTONS')
