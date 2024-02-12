@@ -1,5 +1,13 @@
 ---@meta
+---@class blipOptions
+---@field sprite integer -- Blip sprite
+---@field color integer -- Blip color
+---@field label string -- Blip label
+---@field scale number -- Blip scale
+
+---@meta
 ---@class ZoneOptions
+---@field blip blipOptions? -- Blip options for the zone
 ---@field freeRepair string[]? -- Array of jobs that can repair vehicles for free
 ---@field freeMods string[]? -- Array of jobs that can modify vehicles for free
 ---@field job string[]? -- Array of jobs that can access the zone
