@@ -22,7 +22,7 @@ local function neon()
             defaultIndex = enabled and 2 or 1,
             set = function(index)
                 SetVehicleNeonLightEnabled(vehicle, i - 1, index == 2)
-                return originalNeon[i] == (index == 2), locale('menus.neon.neon', config.neon[i].label, index == 2 and string.lower(locale('menus.general.enabled')) or string.lower(locale('menus.general.disabled')))
+                return originalNeon[i] == (index == 2), locale('menus.neon.neon', config.neon[i].label, ', ' .. (index == 2 and string.lower(locale('menus.general.enabled')) or string.lower(locale('menus.general.disabled'))))
             end,
             restore = function()
                 SetVehicleNeonLightEnabled(vehicle, i - 1, originalNeon[i])
@@ -50,7 +50,7 @@ local function neon()
         set = function(index)
             local rgb = config.neonColors[index]
             SetVehicleNeonLightsColour(vehicle, rgb.r, rgb.g, rgb.b)
-            return originalLabelIndex == index, locale('menus.neon.installed', {neon = config.neonColors[index].label})
+            return originalLabelIndex == index, locale('menus.neon.installed', config.neonColors[index].label)
         end,
         restore = function()
             local rgb = config.neonColors[originalLabelIndex]

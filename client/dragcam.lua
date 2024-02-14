@@ -94,6 +94,7 @@ local function inputListener()
     setCamPosition() -- Set initial cam position, otherwise cam will remain at player until first left click
     CreateThread(function()
         while running do
+            DisableControlAction(0, 0, true) -- INPUT_NEXT_CAMERA | V
             disablePlayerMovement()
             if not isFirstPersonView then
                 SetMouseCursorActiveThisFrame()

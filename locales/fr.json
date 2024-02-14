@@ -38,7 +38,7 @@
         },
         "neon": {
             "title": "Néon",
-            "neon": "Néon %s, %s",
+            "neon": "Néon %s%s",
             "color": "Couleur du néon",
             "installed": "Néon %s installé"
         },

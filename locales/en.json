@@ -38,7 +38,7 @@
         },
         "neon": {
             "title": "Neon",
-            "neon": "Neon %s, %s",
+            "neon": "Neon %s%s",
             "color": "Neon color",
             "installed": "%s neon installed"
         },
