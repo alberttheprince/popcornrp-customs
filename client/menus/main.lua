@@ -81,7 +81,10 @@ local function repair()
     local success = lib.callback.await('qbx_customs:server:repair', false, GetVehicleBodyHealth(vehicle))
     if success then
         exports.qbx_core:Notify(locale('notifications.success.repaired'), 'success')
-        SendNUIMessage({sound = true})
+        qbx.playAudio({
+            audioName = 'PICK_UP',
+            audioRef = 'HUD_FRONTEND_DEFAULT_SOUNDSET'
+        })
         SetVehicleBodyHealth(vehicle, 1000.0)
         SetVehicleEngineHealth(vehicle, 1000.0)
         local fuelLevel = GetVehicleFuelLevel(vehicle)
