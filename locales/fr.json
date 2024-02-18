@@ -58,7 +58,7 @@
         "wheels": {
             "title": "Roues",
             "bikeRear": "Roue arrière de moto",
-            "installed": "%s %S installé"
+            "installed": "%s %s installé"
         },
         "options": {
             "interior": "Intérieur",
