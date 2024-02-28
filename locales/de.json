@@ -1,0 +1,93 @@
+{
+    "notifications": {
+        "success": {
+            "repaired": "Fahrzeug repariert!",
+            "paid": "Du hast $%s von deinem Bankrechnung bezahlt"
+        },
+        "error": {
+            "money": "Du hast nicht genug Geld!",
+            "alreadyInstalled": "Du hast dieses Mod bereits installiert"
+        },
+        "props": {
+            "installTitle": "Werkstatt"
+        }
+    },
+    "dragCam": {
+        "zoomIn": "Zoom vergrößern",
+        "zoomOut": "Zoom verkleinern",
+        "toggleDoors": "Türen umschalten",
+        "changeView": "First-Person umschalten"
+    },
+    "textUI": {
+        "tune":  "Drücke [E] um dein Fahrzeug zu modifizieren"
+    },
+    "menus": {
+        "main": {
+            "title": "Werkstatt",
+            "repair": "Reparieren",
+            "performance": "Performance",
+            "parts": "Optik",
+            "colors": "Lackierung",
+            "extras": "Extras"
+        },
+        "colors": {
+            "primary": "Primärfarbe lackieren",
+            "secondary": "Sekundärfarbe lackieren",
+            "neon": "Neon",
+            "cosmetics_colors": "Lackierung"
+        },
+        "neon": {
+            "title": "Neon",
+            "neon": "Neon %s%s",
+            "color": "Neonfarbe",
+            "installed": "%s installiert."
+        },
+        "paint": {
+            "title": "Lackierung",
+            "primary": "Primärfarbe",
+            "secondary": "Sekundärfarbe"
+        },
+        "parts": {
+            "title": "Optik",
+            "wheels": "Reifen"
+        },
+        "performance": {
+            "title": "Performance",
+            "turbo": "Turbo"
+        },
+        "wheels": {
+            "title": "Reifen",
+            "bikeRear": "Hinterrad",
+            "installed": "%s %s installiert"
+        },
+        "options": {
+            "interior": "Interior",
+            "livery": "Livery",
+            "pearlescent": "Perlmuttglanz",
+            "plateIndex": {
+                "title": "Kennzeichen",
+                "installed": "%s installiert"
+            },
+            "tyreSmoke": "Reifenrauch",
+            "wheelColor": "Reifenfarbe",
+            "windowTint": {
+                "title": "Scheibentönung",
+                "installed": "%s installiert"
+            },
+            "xenon": {
+                "title": "Xenon",
+                "installed": "%s installiert"
+            }
+        },
+        "general": {
+            "stock": "Standard",
+            "enabled": "Aktiviert",
+            "disabled": "Deaktiviert",
+            "installed": "%s installiert",
+            "applied": "%s angewendet"
+        }
+    },
+    "general": {
+        "payReason": "Werkstatt"
+    }
+}
