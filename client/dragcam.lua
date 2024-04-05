@@ -25,7 +25,7 @@ local function setCamPosition()
 
     angleZ = angleZ - mouseX -- left / right
     angleY = angleY + mouseY -- up / down
-    angleY = math.clamp(angleY, 0.0, 89.0) -- >=90 degrees will flip the camera, < 0 is underground
+    angleY = lib.math.clamp(angleY, 0.0, 89.0) -- >=90 degrees will flip the camera, < 0 is underground
 
     local cosAngleZ = cos(angleZ)
     local cosAngleY = cos(angleY)
