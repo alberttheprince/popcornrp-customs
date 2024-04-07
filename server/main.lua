@@ -68,7 +68,7 @@ lib.callback.register('qbx_customs:server:repair', function(source, bodyHealth)
 end)
 
 local function IsVehicleOwned(plate)
-    local result = exports.oxmysql.scalar_async('SELECT 1 from player_vehicles WHERE plate = ?', {plate})
+    local result = MySQL.scalar.await('SELECT 1 from player_vehicles WHERE plate = ?', {plate})
     if result then
         return true
     else
