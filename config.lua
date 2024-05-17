@@ -532,6 +532,14 @@ Config.PlateIndexes = {
     { id = 3, label = 'Blue on White 2' },
     { id = 4, label = 'Blue on White 3' },
     { id = 5, label = 'Yankton' },
+    -- Uncomment below for game build 3095 Chop Shop DLC
+    --{ id = 6,   label = 'eCola' },
+    --{ id = 7,   label = 'Las Venturas' },
+	--{ id = 8,   label = 'Liberty City' },
+    --{ id = 9,   label = 'LS Car Meet' },
+    --{ id = 10,  label = 'Panic' },
+    --{ id = 11,  label = 'Pounders' },
+    --{ id = 12,  label = 'Sprunk' },
 }
 
 Config.Neon = {
