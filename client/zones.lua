@@ -83,3 +83,18 @@ end)
 lib.callback.register('customs:client:zone', function()
     return zoneId
 end)
+
+RegisterNetEvent('customs:client:adminMenu', function()
+    local perm = lib.callback.await('customs:server:checkPerms')
+    if perm then
+        SetEntityVelocity(cache.vehicle, 0.0, 0.0, 0.0)
+        require('client.menus.main')()
+    else
+        lib.notify({
+            title = 'Customs',
+            description = 'Cound not access menu or no vehicle present',
+            position = 'top',
+            type = 'error'
+        })
+    end
+end)

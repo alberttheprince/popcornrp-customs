@@ -128,10 +128,6 @@ end
 menu.onClose = function()
     inMenu = false
     stopDragCam()
-    lib.showTextUI('Press [E] to tune your car', {
-        icon = 'fa-solid fa-car',
-        position = 'left-center',
-    })
     if QBCore then
         TriggerServerEvent("customs:server:saveVehicleProps")
     end
