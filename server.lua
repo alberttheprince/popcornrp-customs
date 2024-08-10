@@ -107,6 +107,7 @@ end
 RegisterNetEvent('customs:server:saveVehicleProps', function()
     local src = source --[[@as number]]
     local vehicleProps = lib.callback.await('customs:client:vehicleProps', src)
+    currentAdmins[src] = currentAdmins[src] or {}
     currentAdmins[src].admin = false
     if IsVehicleOwned(vehicleProps.plate) then
         MySQL.update.await('UPDATE player_vehicles SET mods = ? WHERE plate = ?', {json.encode(vehicleProps), vehicleProps.plate})
@@ -118,7 +119,7 @@ lib.addCommand('admincustoms', {
     help = 'Toggle customs menu for admins',
     restricted = 'group.admin',
 }, function(source, args, raw)
-    currentAdmins[source] = {}
+    currentAdmins[source] = currentAdmins[source] or {}
     currentAdmins[source].admin = true
     TriggerClientEvent('customs:client:adminMenu', source)
 end)
