@@ -53,8 +53,10 @@ end)
 lib.callback.register('customs:server:pay', function(source, mod, level)
     local zone = lib.callback.await('customs:client:zone', source)
 
-    if currentAdmins[source].admin then
-        return true
+    if currentAdmins[source] then
+        if currentAdmins[source].admin then
+            return true
+        end
     end
 
     for i, v in ipairs(Config.Zones) do
@@ -75,8 +77,10 @@ end)
 lib.callback.register('customs:server:repair', function(source, bodyHealth)
     local zone = lib.callback.await('customs:client:zone', source)
 
-    if currentAdmins[source].admin then
-        return true
+    if currentAdmins[source] then
+        if currentAdmins[source].admin then
+            return true
+        end
     end
 
     for i, v in ipairs(Config.Zones) do
