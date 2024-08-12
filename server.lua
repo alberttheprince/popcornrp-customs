@@ -98,6 +98,15 @@ lib.callback.register('customs:server:repair', function(source, bodyHealth)
     return removeMoney(source, price)
 end)
 
+lib.callback.register('customs:server:adminMenuOpened', function(source)
+    if currentAdmins[source] then
+        if currentAdmins[source].admin then
+            return true
+        end
+    end
+    return false
+end)
+
 local function IsVehicleOwned(plate)
     local result = MySQL.scalar.await('SELECT 1 from player_vehicles WHERE plate = ?', {plate})
     if result then
