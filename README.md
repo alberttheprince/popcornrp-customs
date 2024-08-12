@@ -41,6 +41,7 @@ Popcornrp-Customs allows you to set up the following:
 - Displayed pricing
 - All tire and paint options (including Chameleon)
 - Customize your car (duh)
+- Admin only customs menu /admincustoms
 
 You are free to modify this resource as per the attached license. **Please read and understand the license**, as it is a slightly modified MIT License.
 
