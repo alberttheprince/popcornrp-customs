@@ -121,7 +121,7 @@ end)
 --Commands
 lib.addCommand('admincustoms', {
     help = 'Toggle customs menu for admins',
-    restricted = 'group.admin',
+    restricted = 'customs.admin',
 }, function(source, args, raw)
     currentAdmins[source] = currentAdmins[source] or {}
     currentAdmins[source].admin = true
