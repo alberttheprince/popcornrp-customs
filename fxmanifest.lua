@@ -7,7 +7,7 @@ author 'Jorn#0008'
 name 'popcornrp-customs'
 description 'Customs script using ox_lib'
 repository 'https://github.com/alberttheprince/popcornrp-customs'
-version '1.4.0'
+version '1.5.0'
 
 ui_page 'web/index.html'
 
