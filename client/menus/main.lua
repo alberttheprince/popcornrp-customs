@@ -137,6 +137,7 @@ menu.onClose = function()
     if QBCore then
         TriggerServerEvent("customs:server:saveVehicleProps")
     end
+    MENUOPEN = false
 end
 
 lib.callback.register('customs:client:vehicleProps', function()

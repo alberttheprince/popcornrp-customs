@@ -1,6 +1,9 @@
 local zoneId
 local QBCore
 local allowAccess = false
+MENUOPEN = false
+PROMPTOPEN = false
+local inside = false
 
 if GetResourceState('qb-core') == 'started' then
     QBCore = exports['qb-core']:GetCoreObject()
@@ -52,16 +55,42 @@ CreateThread(function()
                     icon = 'fa-solid fa-car',
                     position = 'left-center',
                 })
+                PROMPTOPEN = true
             end,
             onExit = function()
                 zoneId = nil
                 lib.hideTextUI()
+                MENUOPEN = false
+                PROMPTOPEN = false
+                inside = false
             end,
             inside = function()
-                if IsControlJustPressed(0, 38) and cache.vehicle and allowAccess then
+                inside = true
+                --[[if IsControlJustPressed(0, 38) and cache.vehicle and allowAccess then
                     SetEntityVelocity(cache.vehicle, 0.0, 0.0, 0.0)
                     lib.hideTextUI()
+                    MENUOPEN = true
                     require('client.menus.main')()
+                end]]--
+                while inside do
+                    if not PROMPTOPEN and IsPedInAnyVehicle(PlayerPedId(), false) then
+                        lib.showTextUI('Press [E] to tune your car', {
+                            icon = 'fa-solid fa-car',
+                            position = 'left-center',
+                        })
+                        PROMPTOPEN = true
+                    end
+                    if  PROMPTOPEN and not IsPedInAnyVehicle(PlayerPedId(), false) then
+                        lib.hideTextUI()
+                        PROMPTOPEN = false
+                    end
+                    if IsControlJustPressed(0, 38) and IsPedInAnyVehicle(PlayerPedId(), false) and allowAccess then
+                        SetEntityVelocity(cache.vehicle, 0.0, 0.0, 0.0)
+                        lib.hideTextUI()
+                        MENUOPEN = true
+                        require('client.menus.main')()
+                    end
+                    Wait(0)
                 end
             end,
         })
