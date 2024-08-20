@@ -6,24 +6,13 @@ Config.Currency = '$'
 
 ---@type ZoneOptions[]
 Config.Zones = {
--- These MUST be configured with your own location before using them. The current coordinates are set for MOLO MRPD and Benny's
+--  Benny's Example Zone
 --     {
---         freeRepair = { 'police' },
---         freeMods = { 'police' },
---         job = { 'police' },
---         hideBlip = true,
---         points = {
---             vec3(455.15, -991.55, 25.75),
---             vec3(444.83, -991.55, 25.75),
---             vec3(444.84, -1000.55, 25.75),
---             vec3(455.13, -1000.56, 25.75),
---         }
---     },
---     {
---         freeRepair = { 'police' },
---         freeMods = { 'ambulance' },
---         blipLabel = "Benny's",
---         blipColor = 5,
+--         freeRepair = { 'police' }, -- Provides free repairs to specified job
+--         freeMods = { 'police' }, -- provides free modifications to specified job
+--         job = { 'police' }, -- Restricts customs access to a specific job (useful for restricting to mechanics, police, ambulance, etc)
+--         blipLabel = "EXAMPLE ZONE",
+--         blipColor = 5, -- https://docs.fivem.net/docs/game-references/blips/#blip-colors
 --         points = {
 --             vec3(-344.36, -121.92, 38.60),
 --             vec3(-319.43, -130.65, 38.60),
@@ -31,38 +20,71 @@ Config.Zones = {
 --             vec3(-348.59, -139.1, 38.60),
 --         }
 --     },
+
+-- Default GTA 5 Customs and Benny's Locations
     {
+	blipLabel = "Los Santos Customs - Vinewood",
+	blipColor = 5,
         points = {
-            vec3(-224.97, -1314.69, 30.89),
-            vec3(-225.63, -1339.28, 30.89),
-            vec3(-191.95, -1339.87, 30.89),
-            vec3(-192.85, -1314.59, 30.89),
+            vec3(-344.36, -121.92, 38.60),
+            vec3(-319.43, -130.65, 38.60),
+            vec3(-324.77, -147.93, 38.60),
+            vec3(-348.59, -139.1, 38.60),
         }
     },
     {
+	blipLabel = "Los Santos Customs - Airport",
+	blipColor = 5,
         points = {
-            vec3(-1405.72, -445.51, 34.48),
-            vec3(-1427.71, -460.16, 34.48),
-            vec3(-1434.71, -449.5, 34.48),
-            vec3(-1411.64, -435.57, 34.48),
+            vec3(-1147.7, -1990.31, 13.15),
+            vec3(-1171.05, -2013.96, 13.15),
+            vec3(-1158.38, -2026.03, 13.15),
+            vec3(-1139.17, -2007.18, 13.15),
+            vec3(-1144.73, -1992.89, 13.15),
         }
     },
     {
+	blipLabel = "Los Santos Customs - East",
+	blipColor = 5,
         points = {
-            vec3(1171.9, 2635.58, 37.77),
-            vec3(1171.87, 2644.71, 37.77),
-            vec3(1189.76, 2644.09, 37.77),
-            vec3(1189.77, 2636.05, 37.77),
+            vec3(724.93, -1092.04, 22.15),
+            vec3(738.52, -1094.83, 22.15),
+            vec3(737.36, -1064.56, 22.15),
+            vec3(724.14, -1063.71, 22.15),
         }
     },
     {
+	blipLabel = "Los Santos Customs - Sandy Shores",
+	blipColor = 5,
         points = {
-            vec3(96.74, 6619.63, 31.79),
-            vec3(102.72, 6613.48, 31.79),
-            vec3(116.01, 6625.49, 31.79),
-            vec3(109.59, 6632.11, 31.79),
+            vec3(1172.12, 2644.76, 38.55),
+            vec3(1171.39, 2635.66, 38.55),
+            vec3(1189.77, 2636.08, 38.55),
+            vec3(1189.74, 2644.07, 38.55),
         }
-    }
+    },
+    {
+	blipLabel = "Los Santos Customs - Paleto",
+	blipColor = 5,
+        points = {
+            vec3(115.55, 6625.32, 31.75),
+            vec3(109.19, 6631.69, 31.75),
+            vec3(97.39, 6620.02, 31.75),
+            vec3(102.72, 6613.48, 31.75),
+        }
+    },
+    {
+	blipLabel = "Benny's Motorworks",
+	blipColor = 5,
+        points = {
+            vec3(-203.55, -1311.26, 30.85),
+            vec3(-228.06, -1319.24, 30.85),
+            vec3(-228.25, -1334.25, 30.85),
+            vec3(-214.18, -1341.38, 30.85),
+	    vec3(-195.42, -1321.19, 30.85),
+	    vec3(-195.26, -1314.11, 30.85),
+        }
+    },
 }
 
 Config.Mods = {
