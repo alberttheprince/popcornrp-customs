@@ -1,6 +1,13 @@
 local zoneId
 local QBCore
 local allowAccess = false
+local zones = {}
+local textUiTitle = 'Press [E] to tune your car'
+---@type TextUIOptions
+local textUiOptions = {
+    icon = 'fa-solid fa-car',
+    position = 'left-center',
+}
 
 if GetResourceState('qb-core') == 'started' then
     QBCore = exports['qb-core']:GetCoreObject()
@@ -26,7 +33,7 @@ end
 
 CreateThread(function()
     for _, v in ipairs(Config.Zones) do
-        lib.zones.poly({
+        zones[#zones + 1] = lib.zones.poly({
             points = v.points,
             onEnter = function(s)
                 zoneId = s.id
@@ -48,10 +55,7 @@ CreateThread(function()
                     return
                 end
 
-                lib.showTextUI('Press [E] to tune your car', {
-                    icon = 'fa-solid fa-car',
-                    position = 'left-center',
-                })
+                lib.showTextUI(textUiTitle, textUiOptions)
             end,
             onExit = function()
                 zoneId = nil
@@ -96,5 +100,18 @@ RegisterNetEvent('customs:client:adminMenu', function()
             position = 'top',
             type = 'error'
         })
+    end
+end)
+
+lib.onCache("vehicle", function(veh)
+    if not veh then
+        lib.hideTextUI()
+        return
+    end
+    for _, zone in ipairs(zones) do
+        if zone:contains(GetEntityCoords(veh)) then
+            lib.showTextUI(textUiTitle, textUiOptions)
+            break
+        end
     end
 end)
