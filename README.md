@@ -8,7 +8,7 @@ https://github.com/alberttheprince/popcornrp-customs/assets/85725579/518b8ea9-d8
 **Framework specific version by the community:**
 - [QBox](https://github.com/Qbox-project/qbx_customs)
 - [ND Framework](https://github.com/TheStoicBear/popcornrp-customs)
-- [ESX](https://github.com/Sampuke/popcornrp-customs)
+- [ESX](https://github.com/itzdaimy/popcornrp-customs-ESX-)
 - QBCore/Oxcore (This one duh!)
 
 This release is a thank you to the FiveM open-source community and all the developers who have poured hours of their free time into creating helpful, free resources that I've used on my servers in the past and continue to use. Thank you!
