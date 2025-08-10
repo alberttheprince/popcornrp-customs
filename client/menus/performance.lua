@@ -8,37 +8,29 @@ local function priceLabel(price)
     if type(price) ~= 'table' then
         return ('%s%s'):format(Config.Currency, price)
     end
-
     local copy = table.clone(price)
     table.remove(copy, 1)
-
     for i = 1, #copy do
         copy[i] = ('%d: %s%s'):format(i, Config.Currency, copy[i])
     end
-
     return table.concat(copy, ' | ')
 end
 
 local function performance()
     local options = {}
-
     for _, mod in ipairs(Config.Mods) do
         local modCount = GetNumVehicleMods(vehicle, mod.id)
-
         if mod.category ~= 'performance'
         or mod.enabled == false
         or modCount == 0
         then goto continue end
-
         local modLabels = {}
         modLabels[1] = 'Stock'
         for i = -1, modCount - 1 do
             modLabels[i + 2] = getModLabel(vehicle, mod.id, i)
         end
-
         local currentMod = GetVehicleMod(vehicle, mod.id)
         originalMods[mod.id] = currentMod
-
         options[#options+1] = {
             id = mod.id,
             label = mod.label,
@@ -54,10 +46,8 @@ local function performance()
                 SetVehicleMod(vehicle, mod.id, originalMods[mod.id], false)
             end
         }
-
         ::continue::
     end
-
     originalTurbo = IsToggleModOn(vehicle, 18)
     if GetVehicleClass(vehicle) ~= VehicleClass.Cycles then
         options[#options+1] = {
@@ -76,11 +66,9 @@ local function performance()
             end
         }
     end
-
     table.sort(options, function(a, b)
         return a.label < b.label
     end)
-
     return options
 end
 
@@ -97,15 +85,11 @@ local function onSubmit(selected, scrollIndex)
     for _, v in pairs(menu.options) do
         v.restore()
     end
-
     local duplicate, desc = menu.options[selected].set(scrollIndex)
-
     local success = require('client.utils.installMod')(duplicate, menu.options[selected].id, {
         description = desc,
     }, scrollIndex)
-
     if not success then menu.options[selected].restore() end
-
     lib.setMenuOptions(menu.id, performance())
     lib.showMenu(menu.id, lastIndex)
 end
@@ -130,6 +114,18 @@ end
 
 return function()
     menu.options = performance()
+    
+    if #menu.options == 0 then
+        lib.notify({
+            title = 'Customs',
+            description = 'This vehicle has no performance upgrades available',
+            position = 'top',
+            type = 'info'
+        })
+
+        return mainMenuId
+    end
+    
     lib.registerMenu(menu, onSubmit)
     return menu.id
 end
