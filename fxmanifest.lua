@@ -3,7 +3,7 @@ game 'gta5'
 lua54 'yes'
 use_experimental_fxv2_oal 'yes'
 
-author 'Jorn#0008'
+author 'Jorn and Popcorn Roleplay'
 name 'popcornrp-customs'
 description 'Customs script using ox_lib'
 repository 'https://github.com/alberttheprince/popcornrp-customs'
@@ -34,4 +34,5 @@ files {
 
 data_file 'CARCOLS_GEN9_FILE' 'carcols_gen9.meta'
 data_file 'CARMODCOLS_GEN9_FILE' 'carmodcols_gen9.meta'
+
 
