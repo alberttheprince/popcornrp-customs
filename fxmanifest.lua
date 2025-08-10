@@ -7,7 +7,7 @@ author 'Jorn#0008'
 name 'popcornrp-customs'
 description 'Customs script using ox_lib'
 repository 'https://github.com/alberttheprince/popcornrp-customs'
-version '1.4.1'
+version '1.4.2'
 
 ui_page 'web/index.html'
 
@@ -34,3 +34,4 @@ files {
 
 data_file 'CARCOLS_GEN9_FILE' 'carcols_gen9.meta'
 data_file 'CARMODCOLS_GEN9_FILE' 'carmodcols_gen9.meta'
+
