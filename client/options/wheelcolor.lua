@@ -6,11 +6,19 @@ local function wheelcolor()
     local ids = {}
     local labels = {}
 
-    for i, color in ipairs(Config.Paints.Classic) do
-        ids[i] = color.id
-        labels[i] = color.label
-        if color.id == originalWheelColor then
-            defaultIndex = i
+    local categories = { 'Classic', 'Matte', 'Metal', 'Chameleon' }
+
+    local index = 0
+    for _, category in ipairs(categories) do
+        if Config.Paints[category] then
+            for _, color in ipairs(Config.Paints[category]) do
+                index += 1
+                ids[index] = color.id
+                labels[index] = ('%s - %s'):format(category, color.label)
+                if color.id == originalWheelColor then
+                    defaultIndex = index
+                end
+            end
         end
     end
 
