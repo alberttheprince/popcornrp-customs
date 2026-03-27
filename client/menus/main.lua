@@ -53,7 +53,15 @@ local function main()
         },
     }
 
-    if DoesExtraExist(vehicle, 1) then
+    local hasExtras = false
+    for i = 1, 14 do
+        if DoesExtraExist(vehicle, i) then
+            hasExtras = true
+            break
+        end
+    end
+    
+    if hasExtras then
         options[#options + 1] = {
             label = 'Extras',
             close = true,
