@@ -1,3 +1,5 @@
+local ServiceScope = require('client.utils.enums.ServiceScope')
+
 mainLastIndex = 1
 vehicle = 0
 mainMenuId = 'customs-main'
@@ -6,6 +8,7 @@ local inMenu = false
 local dragcam = require('client.dragcam')
 local startDragCam = dragcam.startDragCam
 local stopDragCam = dragcam.stopDragCam
+local serviceDict
 
 if GetResourceState('qb-core') == 'started' then
     QBCore = exports['qb-core']:GetCoreObject()
@@ -22,6 +25,16 @@ local menu = {
 
 local function main()
     if GetVehicleBodyHealth(vehicle) < 1000.0 then
+        if not serviceDict[ServiceScope.Repair] then
+            lib.notify({
+                title = 'Customs',
+                description = 'You cannot do anything here until your vehicle is repaired.',
+                position = 'top',
+                type = 'error'
+            })
+            return -- do not return repair option if it's excluded
+        end
+
         return {{
             label = 'Repair',
             description = ('%s%d'):format(Config.Currency, math.ceil(1000 - GetVehicleBodyHealth(vehicle))),
@@ -29,29 +42,40 @@ local function main()
         }}
     end
 
-    local options = {
-        {
+    local options = {}
+    if serviceDict[ServiceScope.Performance] then
+        options[#options + 1] = {
             label = 'Performance',
             close = true,
             args = {
                 menu = 'client.menus.performance',
             }
-        },
-        {
+        }
+    end
+
+    if serviceDict[ServiceScope.Parts] then
+        options[#options + 1] = {
             label = 'Cosmetics - Parts',
             close = true,
             args = {
                 menu = 'client.menus.parts',
             }
-        },
-        {
+        }
+    end
+
+    if serviceDict[ServiceScope.Colors] then
+        options[#options + 1] = {
             label = 'Cosmetics - Colors',
             close = true,
             args = {
                 menu = 'client.menus.colors',
             }
-        },
-    }
+        }
+    end
+
+    if not serviceDict[ServiceScope.Extra] then
+        return options
+    end
 
     local hasExtras = false
     for i = 1, 14 do
@@ -151,11 +175,53 @@ lib.callback.register('customs:client:vehicleProps', function()
     return QBCore.Functions.GetVehicleProperties(vehicle)
 end)
 
-return function()
+---@param excludedServices integer[]
+---@param service integer
+---@return boolean
+local function isServiceIncluded(excludedServices, service)
+    for i = 1, #excludedServices do
+        if excludedServices[i] == service then
+            return false
+        end
+    end
+
+    return true
+end
+
+---@param excludedServices integer[]
+---@return table<string, true>
+local function getIncludedServiceDict(excludedServices)
+    local services = {}
+    local isAnyServiceIncluded = false
+
+    for _, service in pairs(ServiceScope) do
+        if isServiceIncluded(excludedServices, service) then
+            services[service] = true
+            isAnyServiceIncluded = true
+        end
+    end
+
+
+    assert(
+        isAnyServiceIncluded,
+        "No services are included. The provided excludedServices list filters out all available services."
+    )
+
+    return services
+end
+
+---@param excludedServices number[]|nil
+return function(excludedServices)
     if not cache.vehicle or inMenu then return end
+    serviceDict = excludedServices
+        and getIncludedServiceDict(excludedServices)
+        or ServiceScope
+
     vehicle = cache.vehicle
     SetVehicleModKit(vehicle, 0)
-    menu.options = main()
+    local options = main()
+    if not options then return end
+    menu.options = options
     lib.registerMenu(menu, onSubmit)
     lib.showMenu(menu.id, 1)
     disableControls()

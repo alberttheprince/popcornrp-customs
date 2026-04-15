@@ -65,7 +65,7 @@ CreateThread(function()
                 if IsControlJustPressed(0, 38) and cache.vehicle and allowAccess then
                     SetEntityVelocity(cache.vehicle, 0.0, 0.0, 0.0)
                     lib.hideTextUI()
-                    require('client.menus.main')()
+                    require('client.menus.main')(v.excludedServices or {})
                 end
             end,
         })
