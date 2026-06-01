@@ -7,3 +7,4 @@
 ---@field blipLabel string? -- Name for the blip on the map
 ---@field blipColor number? -- Color for the blip on the map
 ---@field points vector3[] -- Array of points that make up the zone
+---@field excludedServices integer[]? -- Array of services to exclude in zone
