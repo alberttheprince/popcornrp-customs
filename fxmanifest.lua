@@ -7,7 +7,7 @@ author 'Jorn and Popcorn Roleplay'
 name 'popcornrp-customs'
 description 'Customs script using ox_lib'
 repository 'https://github.com/alberttheprince/popcornrp-customs'
-version '1.4.5'
+version '1.4.6'
 
 ui_page 'web/index.html'
 
