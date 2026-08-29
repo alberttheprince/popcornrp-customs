@@ -25,15 +25,27 @@ shared_scripts {
     'config.lua'
 }
 
+-- Uncomment the all the commented text if you are on gamebuild 3751, this will unlock HSW upgrades for ~20 vehicles
+-- dependencies {
+--     '/gameBuild:3751'
+-- }
+
 files {
     'client/**/*.lua',
     'web/**/*',
     'carcols_gen9.meta',
     'carmodcols_gen9.meta',
+    -- 'data/hsw/hsw_carcols.meta',
+    -- 'data/hsw/hsw_carvariations.meta',
 }
 
 data_file 'CARCOLS_GEN9_FILE' 'carcols_gen9.meta'
 data_file 'CARMODCOLS_GEN9_FILE' 'carmodcols_gen9.meta'
+-- data_file 'CARCOLS_FILE' 'data/hsw/hsw_carcols.meta'
+-- data_file 'VEHICLE_VARIATION_FILE' 'data/hsw/hsw_carvariations.meta'
+
+
+
 
 
 
